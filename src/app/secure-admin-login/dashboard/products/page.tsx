@@ -40,9 +40,35 @@ export default function AdminProducts() {
     const [formData, setFormData] = useState<Partial<Product>>({
         name: { tr: '', en: '', de: '', fr: '' },
         description: { tr: '', en: '', de: '', fr: '' },
-        category: 'catheter',
+        category: 'cerrahi',
         image: '',
+        technicalSpecs: { tr: [], en: [], de: [], fr: [] },
+        usageAreas: { tr: [], en: [], de: [], fr: [] },
+        advantages: { tr: [], en: [], de: [], fr: [] },
+        safetyStandards: { tr: [], en: [], de: [], fr: [] },
     });
+
+    const updateArrayField = (field: keyof Product, lang: string, index: number, value: string) => {
+        markDirty();
+        setFormData(prev => {
+            const current = (prev[field] as any)?.[lang] || [];
+            const updated = [...current];
+            if (index === -1) {
+                updated.push(value);
+            } else if (value === null) {
+                updated.splice(index, 1);
+            } else {
+                updated[index] = value;
+            }
+            return {
+                ...prev,
+                [field]: {
+                    ...(prev[field] as any || { tr: [], en: [], de: [], fr: [] }),
+                    [lang]: updated
+                }
+            };
+        });
+    };
 
     const handleDelete = async (id: string) => {
         if (confirm('Bu ürünü silmek istediğinize emin misiniz?')) {
@@ -106,8 +132,12 @@ export default function AdminProducts() {
         setFormData({
             name: { tr: '', en: '', de: '', fr: '' },
             description: { tr: '', en: '', de: '', fr: '' },
-            category: 'catheter',
+            category: 'cerrahi',
             image: '',
+            technicalSpecs: { tr: [], en: [], de: [], fr: [] },
+            usageAreas: { tr: [], en: [], de: [], fr: [] },
+            advantages: { tr: [], en: [], de: [], fr: [] },
+            safetyStandards: { tr: [], en: [], de: [], fr: [] },
         });
     };
 
@@ -198,7 +228,49 @@ export default function AdminProducts() {
                             </div>
                         </div>
 
-                        <div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-gray-100">
+                            {/* Array Editor Component Helper */}
+                            {[
+                                { id: 'technicalSpecs', label: 'Teknik Özellikler' },
+                                { id: 'usageAreas', label: 'Kullanım Alanları' },
+                                { id: 'advantages', label: 'Avantajlar' },
+                                { id: 'safetyStandards', label: 'Güvenlik Standartları' }
+                            ].map(field => (
+                                <div key={field.id} className="space-y-4">
+                                    <label className="block text-sm font-bold tracking-wide text-gray-700">
+                                        {field.label} ({activeLang.toUpperCase()})
+                                    </label>
+                                    <div className="space-y-2">
+                                        {((formData as any)[field.id]?.[activeLang] || []).map((item: string, idx: number) => (
+                                            <div key={idx} className="flex gap-2">
+                                                <input
+                                                    type="text"
+                                                    className="flex-1 px-4 py-2 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none text-sm font-medium"
+                                                    value={item}
+                                                    onChange={e => updateArrayField(field.id as any, activeLang, idx, e.target.value)}
+                                                />
+                                                <button
+                                                    type="button"
+                                                    onClick={() => updateArrayField(field.id as any, activeLang, idx, null as any)}
+                                                    className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                                                >
+                                                    ✕
+                                                </button>
+                                            </div>
+                                        ))}
+                                        <button
+                                            type="button"
+                                            onClick={() => updateArrayField(field.id as any, activeLang, -1, '')}
+                                            className="text-xs font-bold text-primary hover:underline flex items-center gap-1"
+                                        >
+                                            + Yeni Satır Ekle
+                                        </button>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="pt-6 border-t border-gray-100">
                             <label className="block text-sm font-bold tracking-wide text-gray-700 mb-2">Kategori</label>
                             <select
                                 className="w-full px-5 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none font-medium text-dark shadow-sm appearance-none"

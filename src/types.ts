@@ -5,6 +5,10 @@ export interface Product {
     category: string;
     image: string;
     features?: { tr: string[]; en: string[]; de: string[]; fr: string[]; ar?: string[]; };
+    technicalSpecs?: { tr: string[]; en: string[]; de: string[]; fr: string[]; ar?: string[]; };
+    usageAreas?: { tr: string[]; en: string[]; de: string[]; fr: string[]; ar?: string[]; };
+    advantages?: { tr: string[]; en: string[]; de: string[]; fr: string[]; ar?: string[]; };
+    safetyStandards?: { tr: string[]; en: string[]; de: string[]; fr: string[]; ar?: string[]; };
 }
 
 export interface SiteSettings {
@@ -21,6 +25,12 @@ export interface SiteSettings {
     primaryColor?: string;
     backgroundColor?: string;
     font?: string;
+    socialLinks?: {
+        facebook?: string;
+        twitter?: string;
+        linkedin?: string;
+        instagram?: string;
+    };
 }
 
 export interface ThemeSettings {

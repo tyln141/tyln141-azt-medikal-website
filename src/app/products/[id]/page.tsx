@@ -88,32 +88,82 @@ export default function ProductDetail() {
 
               <div className="w-24 h-2 bg-gradient-to-r from-primary to-accent rounded-full mb-10 shadow-sm"></div>
 
-              <div className="space-y-8 flex-grow">
-                <div>
-                  <h3 className="text-2xl font-extrabold text-dark mb-4 drop-shadow-sm">
-                    {t("products.descTitle")}
-                  </h3>
-                  <p className="text-gray-500 text-lg leading-relaxed font-medium">
-                    {getValue(product.description, language)}
-                  </p>
+                {/* Enhanced Specifications Sections */}
+                <div className="pt-10 space-y-12">
+                  {/* Technical Specs */}
+                  {(product as any).technicalSpecs?.[language] && Array.isArray((product as any).technicalSpecs[language]) && (product as any).technicalSpecs[language].length > 0 && (
+                    <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm transition-all hover:shadow-md">
+                      <h3 className="text-xl font-black text-dark mb-6 flex items-center gap-3">
+                        <span className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center text-primary text-sm">⚙️</span>
+                        {t("product.technicalSpecs")}
+                      </h3>
+                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {(product as any).technicalSpecs[language].map((spec: string, idx: number) => (
+                          <li key={idx} className="flex items-start gap-3 text-gray-600 font-medium">
+                            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+                            {spec}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Usage Areas */}
+                  {(product as any).usageAreas?.[language] && Array.isArray((product as any).usageAreas[language]) && (product as any).usageAreas[language].length > 0 && (
+                    <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm transition-all hover:shadow-md">
+                      <h3 className="text-xl font-black text-dark mb-6 flex items-center gap-3">
+                        <span className="w-8 h-8 bg-blue-500/10 rounded-lg flex items-center justify-center text-blue-500 text-sm">🏥</span>
+                        {t("product.usageAreas")}
+                      </h3>
+                      <div className="flex flex-wrap gap-3">
+                        {(product as any).usageAreas[language].map((area: string, idx: number) => (
+                          <span key={idx} className="px-5 py-2.5 bg-gray-50 text-gray-600 rounded-xl font-bold text-sm border border-gray-100">
+                            {area}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {/* Advantages */}
+                    {(product as any).advantages?.[language] && Array.isArray((product as any).advantages[language]) && (product as any).advantages[language].length > 0 && (
+                      <div className="bg-green-50/30 p-8 rounded-3xl border border-green-100/50">
+                        <h3 className="text-xl font-black text-green-800 mb-6 flex items-center gap-3">
+                          <span className="w-8 h-8 bg-green-500/10 rounded-lg flex items-center justify-center text-green-500 text-sm">✅</span>
+                          {t("product.advantages")}
+                        </h3>
+                        <ul className="space-y-4">
+                          {(product as any).advantages[language].map((adv: string, idx: number) => (
+                            <li key={idx} className="flex items-start gap-3 text-green-700 font-medium">
+                              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-green-500 flex-shrink-0"></span>
+                              {adv}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {/* Safety Standards */}
+                    {(product as any).safetyStandards?.[language] && Array.isArray((product as any).safetyStandards[language]) && (product as any).safetyStandards[language].length > 0 && (
+                      <div className="bg-primary/5 p-8 rounded-3xl border border-primary/10">
+                        <h3 className="text-xl font-black text-primary-dark mb-6 flex items-center gap-3">
+                          <span className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center text-primary text-sm">🛡️</span>
+                          {t("product.safetyStandards")}
+                        </h3>
+                        <div className="flex flex-wrap gap-3">
+                          {(product as any).safetyStandards[language].map((std: string, idx: number) => (
+                            <span key={idx} className="px-4 py-2 bg-white text-primary font-black rounded-lg text-xs border border-primary/20 shadow-sm uppercase tracking-widest">
+                              {std}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
-                {(product.features as any)?.[language] && Array.isArray((product.features as any)[language]) && (product.features as any)[language].length > 0 && (
-                  <div className="pt-6">
-                    <h3 className="text-xl font-bold text-dark mb-4">{t("product.specifications")}</h3>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {(product.features as any)[language].map((feat: string, idx: number) => (
-                        <li key={idx} className="flex items-center gap-3 text-gray-600 font-medium">
-                          <span className="w-2 h-2 rounded-full bg-primary flex-shrink-0 shadow-sm shadow-primary/50"></span>
-                          {feat}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-
-              <div className="mt-16 bg-white p-8 rounded-[2rem] border border-gray-100 shadow-xl shadow-gray-200/50">
+                <div className="mt-16 bg-white p-8 rounded-[2rem] border border-gray-100 shadow-xl shadow-gray-200/50">
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button
                     onClick={() => setModalOpen(true)}

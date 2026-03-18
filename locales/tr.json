@@ -34,14 +34,14 @@
     },
     "categories": {
         "title": "Ürün Kategorilerimiz",
+        "cerrahi": "Cerrahi Ürünler",
+        "enfeksiyon": "Enfeksiyon Kontrol",
+        "ekipman": "Hastane Ekipmanları",
+        "sarf": "Medikal Sarf",
         "catheter": "Hemodiyaliz Kateterleri",
-        "catheterDesc": "Yüksek kaliteli ve güvenilir çözümlerle hasta güvenliğini ön planda tutuyoruz.",
         "infusion": "İnfüzyon Pompaları",
-        "infusionDesc": "Hassas dozaj kontrolü sağlayan modern tasarımlarla tedavi süreçlerini optimize ediyoruz.",
         "dialysis": "Diyaliz Sarf Malzemeleri",
-        "dialysisDesc": "Tüm diyaliz ihtiyaçları için kapsamlı ve kaliteli sarf malzeme seçenekleri sunuyoruz.",
-        "port": "Port İğneleri",
-        "portDesc": "Güvenilir port erişimi için özel olarak tasarlanmış yüksek kaliteli port iğneleri sunuyoruz."
+        "port": "Port İğneleri"
     },
     "products": {
         "title": "Tüm Ürünlerimiz",
@@ -54,6 +54,10 @@
     },
     "product": {
         "specifications": "Teknik Özellikler",
+        "technicalSpecs": "Teknik Detaylar",
+        "usageAreas": "Kullanım Alanları",
+        "advantages": "Avantajlar",
+        "safetyStandards": "Güvenlik Standartları",
         "contact": "Bize Ulaşın"
     },
     "contact": {
@@ -70,6 +74,8 @@
     },
     "footer": {
         "desc": "2010'dan beri A'dan Z'ye güvenilir medikal çözümler.",
+        "sitemap": "Site Haritası",
+        "popularProducts": "Popüler Ürünler",
         "rights": "Tüm Hakları Saklıdır."
     },
     "form": {

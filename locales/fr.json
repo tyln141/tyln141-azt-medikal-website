@@ -55,6 +55,10 @@
     },
     "product": {
         "specifications": "Spécifications techniques",
+        "technicalSpecs": "Détails techniques",
+        "usageAreas": "Domaines d'utilisation",
+        "advantages": "Avantages",
+        "safetyStandards": "Normes de sécurité",
         "contact": "Contactez-nous"
     },
     "contact": {
@@ -71,6 +75,8 @@
     },
     "footer": {
         "desc": "Solutions médicales fiables de A à Z depuis 2010.",
+        "sitemap": "Plan du site",
+        "popularProducts": "Produits populaires",
         "rights": "Tous droits réservés."
     },
     "form": {

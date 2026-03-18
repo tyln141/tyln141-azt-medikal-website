@@ -34,14 +34,14 @@
     },
     "categories": {
         "title": "Unsere Produktkategorien",
-        "catheter": "Hämodialysekatheter",
-        "catheterDesc": "Wir legen Wert auf Patientensicherheit mit hochwertigen und zuverlässigen Lösungen.",
+        "cerrahi": "Chirurgische Produkte",
+        "enfeksiyon": "Infektionskontrolle",
+        "ekipman": "Krankenhausausstattung",
+        "sarf": "Medizinische Verbrauchsmaterialien",
+        "catheter": "Hämodialyse-Katheter",
         "infusion": "Infusionspumpen",
-        "infusionDesc": "Wir optimieren Behandlungsprozesse mit modernen Designs, die eine präzise Dosierungskontrolle ermöglichen.",
         "dialysis": "Dialyse-Verbrauchsmaterialien",
-        "dialysisDesc": "Wir bieten umfassende und hochwertige Optionen für alle Dialysebedürfnisse an.",
-        "port": "Port-Nadeln",
-        "portDesc": "Wir bieten hochwertige Port-Nadeln an, die speziell für einen zuverlässigen Port-Zugang entwickelt wurden."
+        "port": "Portkanülen"
     },
     "products": {
         "title": "Alle unsere Produkte",
@@ -55,6 +55,10 @@
     },
     "product": {
         "specifications": "Technische Spezifikationen",
+        "technicalSpecs": "Technische Details",
+        "usageAreas": "Einsatzbereiche",
+        "advantages": "Vorteile",
+        "safetyStandards": "Sicherheitsstandards",
         "contact": "Kontaktieren Sie uns"
     },
     "contact": {
@@ -71,6 +75,8 @@
     },
     "footer": {
         "desc": "Zuverlässige medizinische Lösungen von A bis Z seit 2010.",
+        "sitemap": "Seitenverzeichnis",
+        "popularProducts": "Beliebte Produkte",
         "rights": "Alle Rechte vorbehalten."
     },
     "form": {

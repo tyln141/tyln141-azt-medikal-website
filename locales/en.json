@@ -34,14 +34,14 @@
     },
     "categories": {
         "title": "Our Product Categories",
+        "cerrahi": "Surgical Products",
+        "enfeksiyon": "Infection Control",
+        "ekipman": "Hospital Equipment",
+        "sarf": "Medical Consumables",
         "catheter": "Hemodialysis Catheters",
-        "catheterDesc": "We prioritize patient safety with high quality and reliable solutions.",
         "infusion": "Infusion Pumps",
-        "infusionDesc": "We optimize treatment processes with modern designs that provide precise dosage control.",
         "dialysis": "Dialysis Consumables",
-        "dialysisDesc": "We offer comprehensive and high-quality consumable options for all dialysis needs.",
-        "port": "Port Needles",
-        "portDesc": "We offer high quality port needles specifically designed for reliable port access."
+        "port": "Port Needles"
     },
     "products": {
         "title": "All Our Products",
@@ -54,6 +54,10 @@
     },
     "product": {
         "specifications": "Technical Specifications",
+        "technicalSpecs": "Technical Details",
+        "usageAreas": "Fields of Use",
+        "advantages": "Advantages",
+        "safetyStandards": "Safety Standards",
         "contact": "Contact Us"
     },
     "contact": {
@@ -70,6 +74,8 @@
     },
     "footer": {
         "desc": "Reliable medical solutions from A to Z since 2010.",
+        "sitemap": "Sitemap",
+        "popularProducts": "Popular Products",
         "rights": "All Rights Reserved."
     },
     "form": {

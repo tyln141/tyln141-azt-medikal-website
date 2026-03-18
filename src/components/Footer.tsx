@@ -37,27 +37,27 @@ export default function Footer() {
 
           <div>
             <h4 className="text-dark font-extrabold text-lg mb-8 relative inline-block tracking-tight">
-              {language === 'tr' ? 'Site Haritası' : (language === 'en' ? 'Sitemap' : (language === 'de' ? 'Seitenverzeichnis' : 'Sitemap'))}
+              {t("footer.sitemap")}
               <span className="absolute -bottom-3 left-0 w-8 h-1 bg-primary rounded-full"></span>
             </h4>
             <ul className="flex flex-col gap-4">
               <li><Link href="/" className="text-gray-500 font-medium hover:text-primary transition-colors hover:pl-2 inline-block transform">{t("nav.home")}</Link></li>
               <li><Link href="/products" className="text-gray-500 font-medium hover:text-primary transition-colors hover:pl-2 inline-block transform">{t("nav.products")}</Link></li>
-              <li><Link href="/about" className="text-gray-500 font-medium hover:text-primary transition-colors hover:pl-2 inline-block transform">{t("nav.about")}</Link></li>
+              <li><Link href="/#about" className="text-gray-500 font-medium hover:text-primary transition-colors hover:pl-2 inline-block transform">{t("nav.about")}</Link></li>
               <li><Link href="/contact" className="text-gray-500 font-medium hover:text-primary transition-colors hover:pl-2 inline-block transform">{t("nav.contact")}</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-dark font-extrabold text-lg mb-8 relative inline-block tracking-tight">
-              {language === 'tr' ? 'Popüler Ürünler' : (language === 'en' ? 'Popular Products' : 'Popular Products')}
+              {t("footer.popularProducts")}
               <span className="absolute -bottom-3 left-0 w-8 h-1 bg-primary rounded-full"></span>
             </h4>
             <ul className="flex flex-col gap-4">
-              <li><Link href="/products" className="text-gray-500 font-medium hover:text-primary transition-colors hover:pl-2 inline-block transform">{t("categories.catheter")}</Link></li>
-              <li><Link href="/products" className="text-gray-500 font-medium hover:text-primary transition-colors hover:pl-2 inline-block transform">{t("categories.infusion")}</Link></li>
-              <li><Link href="/products" className="text-gray-500 font-medium hover:text-primary transition-colors hover:pl-2 inline-block transform">{t("categories.dialysis")}</Link></li>
-              <li><Link href="/products" className="text-gray-500 font-medium hover:text-primary transition-colors hover:pl-2 inline-block transform">{t("categories.port")}</Link></li>
+              <li><Link href="/products?category=cerrahi" className="text-gray-500 font-medium hover:text-primary transition-colors hover:pl-2 inline-block transform">{t("categories.cerrahi")}</Link></li>
+              <li><Link href="/products?category=enfeksiyon" className="text-gray-500 font-medium hover:text-primary transition-colors hover:pl-2 inline-block transform">{t("categories.enfeksiyon")}</Link></li>
+              <li><Link href="/products?category=ekipman" className="text-gray-500 font-medium hover:text-primary transition-colors hover:pl-2 inline-block transform">{t("categories.ekipman")}</Link></li>
+              <li><Link href="/products?category=sarf" className="text-gray-500 font-medium hover:text-primary transition-colors hover:pl-2 inline-block transform">{t("categories.sarf")}</Link></li>
             </ul>
           </div>
 
