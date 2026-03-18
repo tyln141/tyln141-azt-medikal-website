@@ -1,0 +1,568 @@
+[
+  {
+    "id": "premium-hemodiyaliz-kalici-kateter-12fr",
+    "name": {
+      "tr": "Premium Hemodiyaliz Kalıcı Kateter – 12Fr",
+      "en": "Premium Hemodialysis Permanent Catheter – 12Fr",
+      "de": "Premium Hämodialyse Permanenter Katheter – 12Fr",
+      "fr": "Cathéter permanent d'hémodialyse premium – 12Fr",
+      "ar": "قسطرة غسيل الكلى الدائمة الممتازة – 12Fr"
+    },
+    "description": {
+      "tr": "12Fr çap, Dacron cuff, Antimikrobiyal kaplama, Uzun süreli kullanım",
+      "en": "12Fr diameter, Dacron cuff, Antimicrobial coating, Long-term use",
+      "de": "12Fr Durchmesser, Dacron-Manschette, Antimikrobielle Beschichtung, Langzeitnutzung",
+      "fr": "Diamètre 12Fr, manchon en dacron, revêtement antimicrobien, utilisation à long terme",
+      "ar": "قطر 12Fr، كفة الداكرون، طلاء مضاد للميكروبات، استخدام طويل الأمد"
+    },
+    "category": "catheter",
+    "image": "",
+    "features": {
+      "tr": [
+        "12Fr çap",
+        "Dacron cuff",
+        "Antimikrobiyal kaplama",
+        "Uzun süreli kullanım"
+      ],
+      "en": [
+        "12Fr diameter",
+        "Dacron cuff",
+        "Antimicrobial coating",
+        "Long-term use"
+      ],
+      "de": [
+        "12Fr Durchmesser",
+        "Dacron-Manschette",
+        "Antimikrobielle Beschichtung",
+        "Langzeitnutzung"
+      ],
+      "fr": [
+        "Diamètre 12Fr",
+        "manchon en dacron",
+        "revêtement antimicrobien",
+        "utilisation à long terme"
+      ],
+      "ar": [
+        "قطر 12Fr، كفة الداكرون، طلاء مضاد للميكروبات، استخدام طويل الأمد"
+      ]
+    }
+  },
+  {
+    "id": "cift-lumenli-kalici-kateter-14fr",
+    "name": {
+      "tr": "Çift Lümenli Kalıcı Kateter – 14Fr",
+      "en": "Dual Lumen Permanent Catheter – 14Fr",
+      "de": "Doppellumiger permanenter Katheter – 14Fr",
+      "fr": "Cathéter permanent à double lumière – 14Fr",
+      "ar": "قسطرة دائمة مزدوجة التجويف – 14Fr"
+    },
+    "description": {
+      "tr": "14Fr çap, Çift lümen tasarım, Dacron cuff, Enfeksiyon direnci",
+      "en": "14Fr diameter, Dual lumen design, Dacron cuff, Infection resistance",
+      "de": "14Fr Durchmesser, Doppellumen-Design, Dacron-Manschette, Infektionsresistenz",
+      "fr": "Diamètre 14Fr, Conception à double lumière, Manchon en Dacron, Résistance aux infections",
+      "ar": "قطر 14Fr، تصميم مزدوج التجويف، كفة الداكرون، مقاومة العدوى"
+    },
+    "category": "catheter",
+    "image": "",
+    "features": {
+      "tr": [
+        "14Fr çap",
+        "Çift lümen tasarım",
+        "Dacron cuff",
+        "Enfeksiyon direnci"
+      ],
+      "en": [
+        "14Fr diameter",
+        "Dual lumen design",
+        "Dacron cuff",
+        "Infection resistance"
+      ],
+      "de": [
+        "14Fr Durchmesser",
+        "Doppellumen-Design",
+        "Dacron-Manschette",
+        "Infektionsresistenz"
+      ],
+      "fr": [
+        "Diamètre 14Fr",
+        "Conception à double lumière",
+        "Manchon en Dacron",
+        "Résistance aux infections"
+      ],
+      "ar": [
+        "قطر 14Fr، تصميم مزدوج التجويف، كفة الداكرون، مقاومة العدوى"
+      ]
+    }
+  },
+  {
+    "id": "gecici-hemodiyaliz-kateteri-11-5fr",
+    "name": {
+      "tr": "Geçici Hemodiyaliz Kateteri – 11.5Fr",
+      "en": "Temporary Hemodialysis Catheter – 11.5Fr",
+      "de": "Temporärer Hämodialysekatheter – 11.5Fr",
+      "fr": "Cathéter temporaire d'hémodialyse – 11.5Fr",
+      "ar": "قسطرة غسيل الكلى المؤقتة – 11.5Fr"
+    },
+    "description": {
+      "tr": "11.5Fr çap, Geçici kullanım, Hızlı yerleştirme, Steril ambalaj",
+      "en": "11.5Fr diameter, Temporary use, Fast insertion, Sterile packaging",
+      "de": "11.5Fr Durchmesser, vorübergehende Anwendung, schnelles Einführen, sterile Verpackung",
+      "fr": "Diamètre 11.5Fr, Utilisation temporaire, Insertion rapide, Emballage stérile",
+      "ar": "قطر 11.5Fr، استخدام مؤقت، إدخال سريع، تغليف معقم"
+    },
+    "category": "catheter",
+    "image": "",
+    "features": {
+      "tr": [
+        "11.5Fr çap",
+        "Geçici kullanım",
+        "Hızlı yerleştirme",
+        "Steril ambalaj"
+      ],
+      "en": [
+        "11.5Fr diameter",
+        "Temporary use",
+        "Fast insertion",
+        "Sterile packaging"
+      ],
+      "de": [
+        "11.5Fr Durchmesser",
+        "vorübergehende Anwendung",
+        "schnelles Einführen",
+        "sterile Verpackung"
+      ],
+      "fr": [
+        "Diamètre 11.5Fr",
+        "Utilisation temporaire",
+        "Insertion rapide",
+        "Emballage stérile"
+      ],
+      "ar": [
+        "قطر 11.5Fr، استخدام مؤقت، إدخال سريع، تغليف معقم"
+      ]
+    }
+  },
+  {
+    "id": "akilli-infuzyon-pompasi-pro-3000",
+    "name": {
+      "tr": "Akıllı İnfüzyon Pompası – Pro 3000",
+      "en": "Smart Infusion Pump – Pro 3000",
+      "de": "Smart-Infusionspumpe – Pro 3000",
+      "fr": "Pompe à perfusion intelligente – Pro 3000",
+      "ar": "مضخة التسريب الذكية – Pro 3000"
+    },
+    "description": {
+      "tr": "Dokunmatik ekran, Alarm sistemi, 0.1 ml/h hassasiyet, Kablosuz bağlantı",
+      "en": "Touch screen, Alarm system, 0.1 ml/h precision, Wireless connection",
+      "de": "Touchscreen, Alarmsystem, 0,1 ml/h Präzision, drahtlose Verbindung",
+      "fr": "Écran tactile, système d'alarme, précision 0,1 ml/h, connexion sans fil",
+      "ar": "شاشة تعمل باللمس، نظام إنذار، دقة 0.1 مل/ساعة، اتصال لاسلكي"
+    },
+    "category": "infusion",
+    "image": "",
+    "features": {
+      "tr": [
+        "Dokunmatik ekran",
+        "Alarm sistemi",
+        "0.1 ml/h hassasiyet",
+        "Kablosuz bağlantı"
+      ],
+      "en": [
+        "Touch screen",
+        "Alarm system",
+        "0.1 ml/h precision",
+        "Wireless connection"
+      ],
+      "de": [
+        "Touchscreen",
+        "Alarmsystem",
+        "0",
+        "1 ml/h Präzision",
+        "drahtlose Verbindung"
+      ],
+      "fr": [
+        "Écran tactile",
+        "système d'alarme",
+        "précision 0",
+        "1 ml/h",
+        "connexion sans fil"
+      ],
+      "ar": [
+        "شاشة تعمل باللمس، نظام إنذار، دقة 0.1 مل/ساعة، اتصال لاسلكي"
+      ]
+    }
+  },
+  {
+    "id": "portatif-infuzyon-pompasi-mini-200",
+    "name": {
+      "tr": "Portatif İnfüzyon Pompası – Mini 200",
+      "en": "Portable Infusion Pump – Mini 200",
+      "de": "Tragbare Infusionspumpe – Mini 200",
+      "fr": "Pompe à perfusion portable – Mini 200",
+      "ar": "مضخة تسريب محمولة – Mini 200"
+    },
+    "description": {
+      "tr": "Kompakt tasarım, Uzun pil ömrü, Hafif, Taşınabilir",
+      "en": "Compact design, Long battery life, Lightweight, Portable",
+      "de": "Kompaktes Design, lange Akkulaufzeit, leicht, tragbar",
+      "fr": "Conception compacte, longue durée de vie de la batterie, légère, portable",
+      "ar": "تصميم مضغوط، عمر بطارية طويل، خفيف الوزن، محمول"
+    },
+    "category": "infusion",
+    "image": "",
+    "features": {
+      "tr": [
+        "Kompakt tasarım",
+        "Uzun pil ömrü",
+        "Hafif",
+        "Taşınabilir"
+      ],
+      "en": [
+        "Compact design",
+        "Long battery life",
+        "Lightweight",
+        "Portable"
+      ],
+      "de": [
+        "Kompaktes Design",
+        "lange Akkulaufzeit",
+        "leicht",
+        "tragbar"
+      ],
+      "fr": [
+        "Conception compacte",
+        "longue durée de vie de la batterie",
+        "légère",
+        "portable"
+      ],
+      "ar": [
+        "تصميم مضغوط، عمر بطارية طويل، خفيف الوزن، محمول"
+      ]
+    }
+  },
+  {
+    "id": "cok-kanalli-infuzyon-pompasi-multi-6",
+    "name": {
+      "tr": "Çok Kanallı İnfüzyon Pompası – Multi 6",
+      "en": "Multi-Channel Infusion Pump – Multi 6",
+      "de": "Mehrkanal-Infusionspumpe – Multi 6",
+      "fr": "Pompe à perfusion multicanaux – Multi 6",
+      "ar": "مضخة تسريب متعددة القنوات – Multi 6"
+    },
+    "description": {
+      "tr": "6 kanal, Bağımsız kontrol, Güvenlik sistemi, Merkezi monitörleme",
+      "en": "6 channels, Independent control, Security system, Central monitoring",
+      "de": "6 Kanäle, unabhängige Steuerung, Sicherheitssystem, zentrale Überwachung",
+      "fr": "6 canaux, contrôle indépendant, système de sécurité, surveillance centrale",
+      "ar": "6 قنوات، تحكم مستقل، نظام أمان، مراقبة مركزية"
+    },
+    "category": "infusion",
+    "image": "",
+    "features": {
+      "tr": [
+        "6 kanal",
+        "Bağımsız kontrol",
+        "Güvenlik sistemi",
+        "Merkezi monitörleme"
+      ],
+      "en": [
+        "6 channels",
+        "Independent control",
+        "Security system",
+        "Central monitoring"
+      ],
+      "de": [
+        "6 Kanäle",
+        "unabhängige Steuerung",
+        "Sicherheitssystem",
+        "zentrale Überwachung"
+      ],
+      "fr": [
+        "6 canaux",
+        "contrôle indépendant",
+        "système de sécurité",
+        "surveillance centrale"
+      ],
+      "ar": [
+        "6 قنوات، تحكم مستقل، نظام أمان، مراقبة مركزية"
+      ]
+    }
+  },
+  {
+    "id": "diyaliz-filtresi-ultra-hd-200",
+    "name": {
+      "tr": "Diyaliz Filtresi – Ultra HD 200",
+      "en": "Dialysis Filter – Ultra HD 200",
+      "de": "Dialysefilter – Ultra HD 200",
+      "fr": "Filtre de dialyse – Ultra HD 200",
+      "ar": "مرشح غسيل الكلى – Ultra HD 200"
+    },
+    "description": {
+      "tr": "Yüksek geçirgenlik, Biyouyumlu membran, Ultra filtrasyon, Düşük protein kaybı",
+      "en": "High permeability, Biocompatible membrane, Ultrafiltration, Low protein loss",
+      "de": "Hohe Permeabilität, biokompatible Membran, Ultrafiltration, geringer Proteinverlust",
+      "fr": "Haute perméabilité, membrane biocompatible, ultrafiltration, faible perte de protéines",
+      "ar": "نفاذية عالية، غشاء متوافق حيويا، ترشيح فائق، فقدان بروتين منخفض"
+    },
+    "category": "dialysis",
+    "image": "",
+    "features": {
+      "tr": [
+        "Yüksek geçirgenlik",
+        "Biyouyumlu membran",
+        "Ultra filtrasyon",
+        "Düşük protein kaybı"
+      ],
+      "en": [
+        "High permeability",
+        "Biocompatible membrane",
+        "Ultrafiltration",
+        "Low protein loss"
+      ],
+      "de": [
+        "Hohe Permeabilität",
+        "biokompatible Membran",
+        "Ultrafiltration",
+        "geringer Proteinverlust"
+      ],
+      "fr": [
+        "Haute perméabilité",
+        "membrane biocompatible",
+        "ultrafiltration",
+        "faible perte de protéines"
+      ],
+      "ar": [
+        "نفاذية عالية، غشاء متوافق حيويا، ترشيح فائق، فقدان بروتين منخفض"
+      ]
+    }
+  },
+  {
+    "id": "diyaliz-seti-complete-pro",
+    "name": {
+      "tr": "Diyaliz Seti – Complete Pro",
+      "en": "Dialysis Set – Complete Pro",
+      "de": "Dialyse-Set – Complete Pro",
+      "fr": "Kit de dialyse – Complete Pro",
+      "ar": "مجموعة غسيل الكلى – Complete Pro"
+    },
+    "description": {
+      "tr": "Tam set, Steril, Kolay bağlantı, Güvenli malzeme",
+      "en": "Full set, Sterile, Easy connection, Safe material",
+      "de": "Vollständiges Set, steril, einfache Verbindung, sicheres Material",
+      "fr": "Ensemble complet, stérile, connexion facile, matériel sûr",
+      "ar": "مجموعة كاملة، معقمة، اتصال سهل، مادة آمنة"
+    },
+    "category": "dialysis",
+    "image": "",
+    "features": {
+      "tr": [
+        "Tam set",
+        "Steril",
+        "Kolay bağlantı",
+        "Güvenli malzeme"
+      ],
+      "en": [
+        "Full set",
+        "Sterile",
+        "Easy connection",
+        "Safe material"
+      ],
+      "de": [
+        "Vollständiges Set",
+        "steril",
+        "einfache Verbindung",
+        "sicheres Material"
+      ],
+      "fr": [
+        "Ensemble complet",
+        "stérile",
+        "connexion facile",
+        "matériel sûr"
+      ],
+      "ar": [
+        "مجموعة كاملة، معقمة، اتصال سهل، مادة آمنة"
+      ]
+    }
+  },
+  {
+    "id": "diyaliz-solusyonu-balance-4l",
+    "name": {
+      "tr": "Diyaliz Solüsyonu – Balance 4L",
+      "en": "Dialysis Solution – Balance 4L",
+      "de": "Dialyselösung – Balance 4L",
+      "fr": "Solution de dialyse – Balance 4L",
+      "ar": "محلول غسيل الكلى – Balance 4L"
+    },
+    "description": {
+      "tr": "Elektrolit dengesi, 4 litre, Uzun raf ömrü, Kalite garantisi",
+      "en": "Electrolyte balance, 4 liters, Long shelf life, Quality guarantee",
+      "de": "Elektrolytgleichgewicht, 4 Liter, lange Haltbarkeit, Qualitätsgarantie",
+      "fr": "Équilibre électrolytique, 4 litres, longue durée de conservation, garantie de qualité",
+      "ar": "توازن الشوارد، 4 لتر، مدة صلاحية طويلة، ضمان الجودة"
+    },
+    "category": "dialysis",
+    "image": "",
+    "features": {
+      "tr": [
+        "Elektrolit dengesi",
+        "4 litre",
+        "Uzun raf ömrü",
+        "Kalite garantisi"
+      ],
+      "en": [
+        "Electrolyte balance",
+        "4 liters",
+        "Long shelf life",
+        "Quality guarantee"
+      ],
+      "de": [
+        "Elektrolytgleichgewicht",
+        "4 Liter",
+        "lange Haltbarkeit",
+        "Qualitätsgarantie"
+      ],
+      "fr": [
+        "Équilibre électrolytique",
+        "4 litres",
+        "longue durée de conservation",
+        "garantie de qualité"
+      ],
+      "ar": [
+        "توازن الشوارد، 4 لتر، مدة صلاحية طويلة، ضمان الجودة"
+      ]
+    }
+  },
+  {
+    "id": "safeaccess-19g",
+    "name": {
+      "tr": "SafeAccess 19G",
+      "en": "SafeAccess 19G",
+      "de": "SafeAccess 19G",
+      "fr": "SafeAccess 19G",
+      "ar": "SafeAccess 19G"
+    },
+    "description": {
+      "tr": "Güvenlik mekanizması, Kolay yerleştirme, Tek kullanımlık",
+      "en": "Safety mechanism, Easy insertion, Disposable",
+      "de": "Sicherheitsmechanismus, einfaches Einführen, wegwerfbar",
+      "fr": "Mécanisme de sécurité, insertion facile, jetable",
+      "ar": "آلية الأمان، سهولة الإدخال، يمكن التخلص منه"
+    },
+    "category": "port",
+    "image": "",
+    "features": {
+      "tr": [
+        "Güvenlik mekanizması",
+        "Kolay yerleştirme",
+        "Tek kullanımlık"
+      ],
+      "en": [
+        "Safety mechanism",
+        "Easy insertion",
+        "Disposable"
+      ],
+      "de": [
+        "Sicherheitsmechanismus",
+        "einfaches Einführen",
+        "wegwerfbar"
+      ],
+      "fr": [
+        "Mécanisme de sécurité",
+        "insertion facile",
+        "jetable"
+      ],
+      "ar": [
+        "آلية الأمان، سهولة الإدخال، يمكن التخلص منه"
+      ]
+    }
+  },
+  {
+    "id": "ultrapoint-20g",
+    "name": {
+      "tr": "UltraPoint 20G",
+      "en": "UltraPoint 20G",
+      "de": "UltraPoint 20G",
+      "fr": "UltraPoint 20G",
+      "ar": "UltraPoint 20G"
+    },
+    "description": {
+      "tr": "Keskin uç, Konfor, Dayanıklı",
+      "en": "Sharp tip, Comfort, Durable",
+      "de": "Scharfe Spitze, Komfort, langlebig",
+      "fr": "Pointe tranchante, confort, durable",
+      "ar": "طرف حاد، راحة، متين"
+    },
+    "category": "port",
+    "image": "",
+    "features": {
+      "tr": [
+        "Keskin uç",
+        "Konfor",
+        "Dayanıklı"
+      ],
+      "en": [
+        "Sharp tip",
+        "Comfort",
+        "Durable"
+      ],
+      "de": [
+        "Scharfe Spitze",
+        "Komfort",
+        "langlebig"
+      ],
+      "fr": [
+        "Pointe tranchante",
+        "confort",
+        "durable"
+      ],
+      "ar": [
+        "طرف حاد، راحة، متين"
+      ]
+    }
+  },
+  {
+    "id": "flexiport-22g",
+    "name": {
+      "tr": "FlexiPort 22G",
+      "en": "FlexiPort 22G",
+      "de": "FlexiPort 22G",
+      "fr": "FlexiPort 22G",
+      "ar": "FlexiPort 22G"
+    },
+    "description": {
+      "tr": "Esnek yapı, Minimal travma, Yüksek akış",
+      "en": "Flexible structure, Minimal trauma, High flow",
+      "de": "Flexible Struktur, minimales Trauma, hoher Fluss",
+      "fr": "Structure flexible, traumatisme minimal, débit élevé",
+      "ar": "هيكل مرن، الحد الأدنى من الصدمة، تدفق عالي"
+    },
+    "category": "port",
+    "image": "",
+    "features": {
+      "tr": [
+        "Esnek yapı",
+        "Minimal travma",
+        "Yüksek akış"
+      ],
+      "en": [
+        "Flexible structure",
+        "Minimal trauma",
+        "High flow"
+      ],
+      "de": [
+        "Flexible Struktur",
+        "minimales Trauma",
+        "hoher Fluss"
+      ],
+      "fr": [
+        "Structure flexible",
+        "traumatisme minimal",
+        "débit élevé"
+      ],
+      "ar": [
+        "هيكل مرن، الحد الأدنى من الصدمة، تدفق عالي"
+      ]
+    }
+  }
+]

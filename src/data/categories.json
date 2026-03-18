@@ -1,0 +1,42 @@
+[
+  {
+    "id": "catheter",
+    "name": {
+      "tr": "Kateter",
+      "en": "Catheter",
+      "de": "Katheter",
+      "fr": "Cathéter",
+      "ar": "القسطرة"
+    }
+  },
+  {
+    "id": "infusion",
+    "name": {
+      "tr": "İnfüzyon",
+      "en": "Infusion",
+      "de": "Infusion",
+      "fr": "Perfusion",
+      "ar": "التسريب"
+    }
+  },
+  {
+    "id": "dialysis",
+    "name": {
+      "tr": "Diyaliz",
+      "en": "Dialysis",
+      "de": "Dialyse",
+      "fr": "Dialyse",
+      "ar": "غسيل الكلى"
+    }
+  },
+  {
+    "id": "port",
+    "name": {
+      "tr": "Port",
+      "en": "Port",
+      "de": "Hafen",
+      "fr": "Port",
+      "ar": "ميناء"
+    }
+  }
+]

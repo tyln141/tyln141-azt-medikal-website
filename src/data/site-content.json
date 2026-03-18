@@ -1,0 +1,120 @@
+{
+  "about": {
+    "title": {
+      "tr": "Sağlıkta Güven ve Kalite",
+      "en": "Trust and Quality in Health",
+      "de": "Vertrauen und Qualität in der Gesundheit",
+      "fr": "Confiance et Qualité en Santé"
+    },
+    "description": {
+      "tr": "AZT Medikal olarak 2010 yılından beri sağlık profesyonellerine en kaliteli tıbbi malzemeleri ulaştırıyoruz. Ankara merkezli firmamız, geniş ürün yelpazesi ve müşteri odaklı hizmet anlayışıyla sektörde güvenilir bir çözüm ortağıdır.",
+      "en": "As AZT Medikal, we have been delivering the highest quality medical supplies to healthcare professionals since 2010. Our Ankara-based company is a reliable solution partner in the sector with its wide product range and customer-oriented service approach.",
+      "de": "Als AZT Medikal liefern wir seit 2010 medizinische Versorgungsgüter höchster Qualität an medizinisches Fachpersonal. Unser in Ankara ansässiges Unternehmen ist mit seiner breiten Produktpalette und seinem kundenorientierten Serviceansatz ein zuverlässiger Lösungspartner in der Branche.",
+      "fr": "En tant qu'AZT Medikal, nous livrons des fournitures médicales de la plus haute qualité aux professionnels de la santé depuis 2010. Notre entreprise basée à Ankara est un partenaire de solution fiable dans le secteur grâce à sa large gamme de produits et à son approche de service axée sur le client."
+    },
+    "stats": [
+      {
+        "value": "15+",
+        "label": {
+          "tr": "Yıllık Deneyim",
+          "en": "Years of Experience",
+          "de": "Jahre Erfahrung",
+          "fr": "Années d'Expérience"
+        }
+      },
+      {
+        "value": "1000+",
+        "label": {
+          "tr": "Mutlu Müşteri",
+          "en": "Happy Clients",
+          "de": "Zufriedene Kunden",
+          "fr": "Clients Heureux"
+        }
+      },
+      {
+        "value": "5000+",
+        "label": {
+          "tr": "Ürün Çeşidi",
+          "en": "Product Types",
+          "de": "Produktarten",
+          "fr": "Types de Produits"
+        }
+      }
+    ],
+    "image": "/uploads/1773780742602-y291x.jpeg",
+    "imageWidth": "3000",
+    "imageHeight": "200",
+    "imageFit": "contain",
+    "imagePosition": "center"
+  },
+  "whyUs": {
+    "title": {
+      "tr": "Neden Bizi Seçmelisiniz?",
+      "en": "Why Choose Us?",
+      "de": "Warum Uns Wählen?",
+      "fr": "Pourquoi Nous Choisir?"
+    },
+    "items": [
+      {
+        "icon": "🛡️",
+        "title": {
+          "tr": "Yüksek Kalite",
+          "en": "High Quality",
+          "de": "Hohe Qualität",
+          "fr": "Haute Qualité"
+        },
+        "description": {
+          "tr": "Tüm ürünlerimiz uluslararası kalite standartlarına uygun olarak titizlikle seçilir.",
+          "en": "All our products are meticulously selected in accordance with international quality standards.",
+          "de": "Alle unsere Produkte werden sorgfältig nach internationalen Qualitätsstandards ausgewählt.",
+          "fr": "Tous nos produits sont méticuleusement sélectionnés conformément aux normes de qualité internationales."
+        }
+      },
+      {
+        "icon": "🚚",
+        "title": {
+          "tr": "Hızlı Teslimat",
+          "en": "Fast Delivery",
+          "de": "Schnelle Lieferung",
+          "fr": "Livraison Rapide"
+        },
+        "description": {
+          "tr": "Siparişlerinizi en kısa sürede ve güvenli bir şekilde adresinize ulaştırıyoruz.",
+          "en": "We deliver your orders to your address as soon as possible and safely.",
+          "de": "Wir liefern Ihre Bestellungen so schnell wie möglich und sicher an Ihre Adresse.",
+          "fr": "Nous livrons vos commandes à votre adresse dans les plus brefs délais et en toute sécurité."
+        }
+      },
+      {
+        "icon": "📞",
+        "title": {
+          "tr": "7/24 Destek",
+          "en": "24/7 Support",
+          "de": "24/7 Unterstützung",
+          "fr": "Support 24/7"
+        },
+        "description": {
+          "tr": "İhtiyaç duyduğunuz her an uzman ekibimizden destek alabilirsiniz.",
+          "en": "You can get support from our expert team whenever you need it.",
+          "de": "Sie können sich jederzeit von unserem Expertenteam unterstützen lassen.",
+          "fr": "Vous pouvez obtenir le soutien de notre équipe d'experts chaque fois que vous en avez besoin."
+        }
+      },
+      {
+        "icon": "💰",
+        "title": {
+          "tr": "Uygun Fiyat",
+          "en": "Affordable Price",
+          "de": "Bezahlbarer Preis",
+          "fr": "Prix Abordable"
+        },
+        "description": {
+          "tr": "Kaliteli ürünlere en rekabetçi fiyatlarla ulaşmanızı sağlıyoruz.",
+          "en": "We ensure that you reach quality products at the most competitive prices.",
+          "de": "Wir stellen sicher, dass Sie Qualitätsprodukte zu den wettbewerbsfähigsten Preisen erhalten.",
+          "fr": "Nous veillons à ce que vous accédiez à des produits de qualité aux prix les plus compétitifs."
+        }
+      }
+    ]
+  }
+}

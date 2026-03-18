@@ -1,0 +1,91 @@
+﻿
+> web@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+
+node.exe : ÔÜá The "m
+iddleware" file conve
+ntion is deprecated. 
+Please use "proxy" in
+stead. Learn more: ht
+tps://nextjs.org/docs
+/messages/middleware-
+to-proxy
+At line:1 char:1
++ & "C:\Program Files
+\nodejs/node.exe" "C:
+\Program Files\nodejs
+/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (ÔÜá The   
+  "middle...lewar    
+e-to-proxy:Strin    g
+) [], RemoteExc    ep
+tion
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+  Creating an optimized production build ...
+
+> Build error occurre
+d
+Error: Turbopack buil
+d failed with 1 error
+s:
+./src/app/globals.css
+:1861:8
+Parsing CSS source co
+de failed
+[0m [90m 1859 |[39
+m }
+ [90m 1860 |[39m
+[31m[1m>[22m[39m
+[90m 1861 |[39m [33
+m@[39m[36mimport[3
+9m url([32m'https://
+fonts.googleapis.com/
+css2?family=Dancing+S
+cript:wght@400;700&di
+splay=swap'[39m)[33
+m;[39m
+ [90m      |[39m   
+     [31m[1m^[22m
+[39m
+ [90m 1862 |[39m
+ [90m 1863 |[39m [
+33m.[39mfont[33m-[
+39mhandwriting {
+ [90m 1864 |[39m   
+font[33m-[39mfamily
+[33m:[39m [32m'Dan
+cing Script'[39m[33
+m,[39m cursive[33m,
+[39m serif[33m;[39
+m[0m
+
+@import rules must pr
+ecede all rules aside
+ from @charset and @l
+ayer statements
+
+Import trace:
+  Client Component Br
+owser:
+    ./src/app/globals
+.css [Client Componen
+t Browser]
+    ./src/app/layout.
+tsx [Server Component
+]
+
+
+    at <unknown> (./s
+rc/app/globals.css:18
+61:8)

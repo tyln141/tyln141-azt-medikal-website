@@ -1,0 +1,83 @@
+{
+    "nav": {
+        "home": "Ana Sayfa",
+        "products": "Ürünlerimiz",
+        "about": "Hakkımızda",
+        "why_us": "Neden Biz",
+        "contact": "İletişim",
+        "admin": "Admin Login"
+    },
+    "hero": {
+        "title": "A'dan Z'ye Temin",
+        "subtitle": "Sağlık Sektöründeki Güvenilir Çözüm Ortağınız",
+        "cta": "Ürünlerimizi İnceleyin"
+    },
+    "about": {
+        "title": "Hakkımızda",
+        "desc": "2010'dan beri Ankara'da sağlık profesyonellerinin çözüm ortağıyız. 'A'dan Z'ye Temin' anlayışıyla, uzman kadromuzla modern medikal çözümler sunuyoruz.",
+        "stats": {
+            "exp": "15+ Yıl Tecrübe",
+            "clients": "500+ Mutlu Müşteri",
+            "products": "1000+ Ürün Çeşidi"
+        }
+    },
+    "whyUs": {
+        "title": "Neden Bizi Seçmelisiniz?",
+        "tech": "Teknoloji",
+        "techDesc": "En son teknoloji ile donatılmış modern medikal cihazlar ve çözümler sunuyoruz.",
+        "team": "Uzman Kadro",
+        "teamDesc": "Alanında uzman teknik personelimiz ile kesintisiz destek ve danışmanlık hizmeti veriyoruz.",
+        "partnership": "Çözüm Ortaklığı",
+        "partnershipDesc": "Sadece satış değil, uzun vadeli çözüm ortaklığı kurarak sürekli destek sağlıyoruz.",
+        "network": "Geniş Tedarik Ağı",
+        "networkDesc": "Dünya çapındaki güvenilir tedarikçi ağımız ile her türlü medikal ihtiyacı karşılıyoruz."
+    },
+    "categories": {
+        "title": "Ürün Kategorilerimiz",
+        "catheter": "Hemodiyaliz Kateterleri",
+        "catheterDesc": "Yüksek kaliteli ve güvenilir çözümlerle hasta güvenliğini ön planda tutuyoruz.",
+        "infusion": "İnfüzyon Pompaları",
+        "infusionDesc": "Hassas dozaj kontrolü sağlayan modern tasarımlarla tedavi süreçlerini optimize ediyoruz.",
+        "dialysis": "Diyaliz Sarf Malzemeleri",
+        "dialysisDesc": "Tüm diyaliz ihtiyaçları için kapsamlı ve kaliteli sarf malzeme seçenekleri sunuyoruz.",
+        "port": "Port İğneleri",
+        "portDesc": "Güvenilir port erişimi için özel olarak tasarlanmış yüksek kaliteli port iğneleri sunuyoruz."
+    },
+    "products": {
+        "title": "Tüm Ürünlerimiz",
+        "details": "Detayları İncele",
+        "requestQuote": "Fiyat Teklifi Al",
+        "descTitle": "Ürün Özellikleri",
+        "extraInfo": "Ek Bilgiler",
+        "notFound": "Ürün Bulunamadı",
+        "viewAll": "Tüm Ürünleri Gör"
+    },
+    "product": {
+        "specifications": "Teknik Özellikler",
+        "contact": "Bize Ulaşın"
+    },
+    "contact": {
+        "title": "İletişim",
+        "desc": "Her türlü medikal ihtiyacınız için bizimle iletişime geçebilirsiniz.",
+        "address": "Adres",
+        "addressText": "Kırkkonaklar Mah. 316 cad. 335 sok. N0:13/A, Çankaya/Ankara",
+        "phone": "Telefon",
+        "phoneText": "(0312) 495 54 87",
+        "email": "E-posta",
+        "emailText": "azt@aztmedikal.com.tr",
+        "hours": "Çalışma Saatleri",
+        "hoursText": "Hafta İçi: 09:00–17:00 | Hafta Sonu: Kapalı"
+    },
+    "footer": {
+        "desc": "2010'dan beri A'dan Z'ye güvenilir medikal çözümler.",
+        "rights": "Tüm Hakları Saklıdır."
+    },
+    "form": {
+        "name": "Adınız Soyadınız",
+        "phone": "Telefon Numaranız",
+        "email": "E-mail Adresiniz",
+        "message": "Mesajınız",
+        "send": "Gönder",
+        "success": "Talebiniz başarıyla alındı. Size en kısa sürede dönüş yapacağız."
+    }
+}

@@ -1,0 +1,84 @@
+{
+    "nav": {
+        "home": "Accueil",
+        "products": "Produits",
+        "about": "À propos",
+        "why_us": "Pourquoi nous",
+        "contact": "Contact",
+        "admin": "Connexion Admin"
+    },
+    "hero": {
+        "title": "Approvisionnement de A à Z",
+        "subtitle": "Votre partenaire de solutions de confiance dans le secteur de la santé",
+        "cta": "Découvrez nos produits"
+    },
+    "about": {
+        "title": "À propos de nous",
+        "desc": "Depuis 2010, nous sommes le partenaire de solutions pour les professionnels de la santé à Ankara. Avec l'approche 'Approvisionnement de A à Z', nous proposons des solutions médicales modernes avec notre personnel expert.",
+        "stats": {
+            "exp": "15+ ans d'expérience",
+            "clients": "500+ clients satisfaits",
+            "products": "1000+ types de produits"
+        }
+    },
+    "whyUs": {
+        "title": "Pourquoi nous choisir ?",
+        "tech": "Technologie",
+        "techDesc": "Nous proposons des dispositifs médicaux modernes et des solutions équipées des dernières technologies.",
+        "team": "Personnel expert",
+        "teamDesc": "Nous fournissons un support continu et des services de conseil avec notre personnel technique expert.",
+        "partnership": "Partenariat de solutions",
+        "partnershipDesc": "Nous fournissons un support continu en établissant un partenariat de solutions à long terme, pas seulement des ventes.",
+        "network": "Large réseau d'approvisionnement",
+        "networkDesc": "Nous répondons à tous types de besoins médicaux grâce à notre réseau mondial de fournisseurs fiables."
+    },
+    "categories": {
+        "title": "Nos catégories de produits",
+        "catheter": "Cathéters d'hémodialyse",
+        "catheterDesc": "Nous privilégions la sécurité des patients avec des solutions de haute qualité et fiables.",
+        "infusion": "Pompes à perfusion",
+        "infusionDesc": "Nous optimisons les processus de traitement avec des conceptions modernes qui offrent un contrôle précis du dosage.",
+        "dialysis": "Consommables de dialyse",
+        "dialysisDesc": "Nous proposons des options de consommables complètes et de haute qualité pour tous les besoins de dialyse.",
+        "port": "Aiguilles de port",
+        "portDesc": "Nous proposons des aiguilles de port de haute qualité spécifiquement conçues pour un accès fiable au port."
+    },
+    "products": {
+        "title": "Tous nos produits",
+        "featured": "Nos Produits Vedettes",
+        "details": "Examiner les détails",
+        "requestQuote": "Obtenir un devis",
+        "descTitle": "Spécifications du produit",
+        "extraInfo": "Informations supplémentaires",
+        "notFound": "Produit non trouvé",
+        "viewAll": "Voir tous les produits"
+    },
+    "product": {
+        "specifications": "Spécifications techniques",
+        "contact": "Contactez-nous"
+    },
+    "contact": {
+        "title": "Contact",
+        "desc": "Vous pouvez nous contacter pour tous vos besoins médicaux.",
+        "address": "Adresse",
+        "addressText": "Kirkkonaklar Mah. 316 cad. 335 sok. N0:13/A, Cankaya/Ankara",
+        "phone": "Téléphone",
+        "phoneText": "(0312) 495 54 87",
+        "email": "E-mail",
+        "emailText": "azt@aztmedikal.com.tr",
+        "hours": "Heures de travail",
+        "hoursText": "En semaine : 09h00–17h00 | Week-end : Fermé"
+    },
+    "footer": {
+        "desc": "Solutions médicales fiables de A à Z depuis 2010.",
+        "rights": "Tous droits réservés."
+    },
+    "form": {
+        "name": "Nom complet",
+        "phone": "Numéro de téléphone",
+        "email": "Adresse e-mail",
+        "message": "Votre message",
+        "send": "Envoyer",
+        "success": "Votre demande a été reçue avec succès. Nous vous répondrons dans les plus brefs délais."
+    }
+}

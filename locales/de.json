@@ -1,0 +1,84 @@
+{
+    "nav": {
+        "home": "Startseite",
+        "products": "Produkte",
+        "about": "Über uns",
+        "why_us": "Warum wir",
+        "contact": "Kontakt",
+        "admin": "Admin-Login"
+    },
+    "hero": {
+        "title": "Bereitstellung von A bis Z",
+        "subtitle": "Ihr vertrauenswürdiger Lösungspartner im Gesundheitssektor",
+        "cta": "Unsere Produkte Entdecken"
+    },
+    "about": {
+        "title": "Über uns",
+        "desc": "Seit 2010 sind wir der Lösungspartner für Gesundheitsfachkräfte in Ankara. Mit dem 'A bis Z Bereitstellung'-Ansatz bieten wir moderne medizinische Lösungen mit unserem Fachpersonal an.",
+        "stats": {
+            "exp": "15+ Jahre Erfahrung",
+            "clients": "500+ Glückliche Kunden",
+            "products": "1000+ Produkttypen"
+        }
+    },
+    "whyUs": {
+        "title": "Warum uns wählen?",
+        "tech": "Technologie",
+        "techDesc": "Wir bieten moderne medizinische Geräte und Lösungen an, die mit der neuesten Technologie ausgestattet sind.",
+        "team": "Fachpersonal",
+        "teamDesc": "Wir bieten kontinuierliche Unterstützung und Beratungsdienste mit unserem fachkundigen technischen Personal.",
+        "partnership": "Lösungspartnerschaft",
+        "partnershipDesc": "Wir bieten kontinuierliche Unterstützung durch den Aufbau einer langfristigen Lösungspartnerschaft, nicht nur durch Verkäufe.",
+        "network": "Breites Versorgungsnetz",
+        "networkDesc": "Mit unserem weltweit zuverlässigen Lieferantennetzwerk decken wir alle Arten von medizinischen Bedürfnissen ab."
+    },
+    "categories": {
+        "title": "Unsere Produktkategorien",
+        "catheter": "Hämodialysekatheter",
+        "catheterDesc": "Wir legen Wert auf Patientensicherheit mit hochwertigen und zuverlässigen Lösungen.",
+        "infusion": "Infusionspumpen",
+        "infusionDesc": "Wir optimieren Behandlungsprozesse mit modernen Designs, die eine präzise Dosierungskontrolle ermöglichen.",
+        "dialysis": "Dialyse-Verbrauchsmaterialien",
+        "dialysisDesc": "Wir bieten umfassende und hochwertige Optionen für alle Dialysebedürfnisse an.",
+        "port": "Port-Nadeln",
+        "portDesc": "Wir bieten hochwertige Port-Nadeln an, die speziell für einen zuverlässigen Port-Zugang entwickelt wurden."
+    },
+    "products": {
+        "title": "Alle unsere Produkte",
+        "featured": "Unsere Top-Produkte",
+        "details": "Details ansehen",
+        "requestQuote": "Angebot anfordern",
+        "descTitle": "Produktspezifikationen",
+        "extraInfo": "Zusätzliche Informationen",
+        "notFound": "Produkt nicht gefunden",
+        "viewAll": "Alle Produkte anzeigen"
+    },
+    "product": {
+        "specifications": "Technische Spezifikationen",
+        "contact": "Kontaktieren Sie uns"
+    },
+    "contact": {
+        "title": "Kontakt",
+        "desc": "Sie können uns für alle Ihre medizinischen Bedürfnisse kontaktieren.",
+        "address": "Adresse",
+        "addressText": "Kirkkonaklar Mah. 316 cad. 335 sok. N0:13/A, Cankaya/Ankara",
+        "phone": "Telefon",
+        "phoneText": "(0312) 495 54 87",
+        "email": "E-Mail",
+        "emailText": "azt@aztmedikal.com.tr",
+        "hours": "Arbeitszeiten",
+        "hoursText": "Wochentage: 09:00–17:00 | Wochenende: Geschlossen"
+    },
+    "footer": {
+        "desc": "Zuverlässige medizinische Lösungen von A bis Z seit 2010.",
+        "rights": "Alle Rechte vorbehalten."
+    },
+    "form": {
+        "name": "Vollständiger Name",
+        "phone": "Telefonnummer",
+        "email": "E-Mail-Adresse",
+        "message": "Ihre Nachricht",
+        "send": "Senden",
+        "success": "Ihre Anfrage wurde erfolgreich empfangen. Wir werden uns so schnell wie möglich bei Ihnen melden."
+    }
+}

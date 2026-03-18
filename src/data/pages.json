@@ -1,0 +1,297 @@
+{
+  "siteSettings": {
+    "logo": "/uploads/1773583836251-59np1.jpeg"
+  },
+  "home": [
+    {
+      "id": "hero-1",
+      "type": "Hero",
+      "content": {
+        "title": {
+          "tr": "AZT Medikal Sağlık Çözümleri",
+          "en": "AZT Medical Health Solutions",
+          "de": "AZT Medizinische Gesundheitslösungen",
+          "fr": "Solutions de santé AZT Medical",
+          "ar": "حلول AZT الطبية الصحية"
+        },
+        "subtitle": {
+          "tr": "Yenilikçi, güvenilir ve kaliteli tıbbi ürünlerle sağlığınız güvende.",
+          "en": "Your health is safe with innovative, reliable and high quality medical products.",
+          "de": "Ihre Gesundheit ist mit innovativen, zuverlässigen und hochwertigen medizinischen Produkten sicher.",
+          "fr": "Votre santé est en sécurité avec des produits médicaux innovants, fiables et de haute qualité.",
+          "ar": "صحتك في أمان مع منتجات طبية مبتكرة وموثوقة وعالية الجودة."
+        },
+        "buttonText": {
+          "tr": "Ürünlerimizi İnceleyin",
+          "en": "Browse Our Products",
+          "de": "Unsere Produkte durchsuchen",
+          "fr": "Parcourez Nos Produits",
+          "ar": "تصفح منتجاتنا"
+        },
+        "buttonLink": "/products",
+        "backgroundImage": ""
+      }
+    },
+    {
+      "id": "info-cards-1",
+      "type": "InfoCards",
+      "content": {
+        "cards": [
+          {
+            "title": {
+              "tr": "Yüksek Kalite",
+              "en": "High Quality",
+              "de": "Hohe Qualität",
+              "fr": "Haute Qualité",
+              "ar": "جودة عالية"
+            },
+            "desc": {
+              "tr": "Uluslararası standartlarda üretim.",
+              "en": "Production at international standards.",
+              "de": "Produktion nach internationalen Standards.",
+              "fr": "Production aux normes internationales.",
+              "ar": "الإنتاج بالمعايير الدولية."
+            },
+            "icon": "🏆"
+          },
+          {
+            "title": {
+              "tr": "Güvenilir Hizmet",
+              "en": "Reliable Service",
+              "de": "Zuverlässiger Service",
+              "fr": "Service Fiable",
+              "ar": "خدمة موثوقة"
+            },
+            "desc": {
+              "tr": "Satış sonrası kesintisiz destek.",
+              "en": "Continuous post-sales support.",
+              "de": "Kontinuierlicher After-Sales-Support.",
+              "fr": "Support après-vente continu.",
+              "ar": "دعم مستمر بعد البيع."
+            },
+            "icon": "🛡️"
+          },
+          {
+            "title": {
+              "tr": "Hızlı Teslimat",
+              "en": "Fast Delivery",
+              "de": "Schnelle Lieferung",
+              "fr": "Livraison Rapide",
+              "ar": "توصيل سريع"
+            },
+            "desc": {
+              "tr": "Global lojistik ağı ile anında sevkiyat.",
+              "en": "Instant shipment with global logistics network.",
+              "de": "Sofortiger Versand mit globalem Logistiknetzwerk.",
+              "fr": "Expédition instantanée avec un réseau logistique mondial.",
+              "ar": "شحن فوري مع شبكة الخدمات اللوجستية العالمية."
+            },
+            "icon": "🚚"
+          }
+        ]
+      }
+    },
+    {
+      "id": "product-grid-1",
+      "type": "ProductGrid",
+      "content": {
+        "title": {
+          "tr": "Öne Çıkan Ürünlerimiz",
+          "en": "Our Featured Products",
+          "de": "Unsere vorgestellten Produkte",
+          "fr": "Nos produits vedettes",
+          "ar": "منتجاتنا المميزة"
+        }
+      }
+    },
+    {
+      "id": "contact-1",
+      "type": "Contact",
+      "content": {
+        "title": {
+          "tr": "Hızlı Teklif İsteyin",
+          "en": "Request a Quick Quote",
+          "de": "Fordern Sie ein schnelles Angebot an",
+          "fr": "Demandez un devis rapide",
+          "ar": "اطلب عرض سعر سريع"
+        }
+      }
+    }
+  ],
+  "about": [
+    {
+      "id": "about-hero-1",
+      "type": "AboutHero",
+      "content": {
+        "title": {
+          "tr": "Hakkımızda",
+          "en": "About Us",
+          "de": "Über uns",
+          "fr": "À propos de nous",
+          "ar": "حولنا"
+        },
+        "subtitle": {
+          "tr": "A'dan Z'ye Temin",
+          "en": "A to Z Supply",
+          "de": "A bis Z Versorgung",
+          "fr": "Approvisionnement de A à Z",
+          "ar": "من الألف إلى الياء التوريد"
+        },
+        "description": {
+          "tr": "2010 yılından beri Ankara'da sağlık profesyonellerinin yanındayız. Modern medikal çözümlerle geleceği inşa ediyoruz.",
+          "en": "We have been with health professionals in Ankara since 2010. We build the future with modern medical solutions.",
+          "de": "Seit 2010 sind wir an der Seite von medizinischem Fachpersonal in Ankara. Mit modernen medizinischen Lösungen bauen wir die Zukunft.",
+          "fr": "Nous accompagnons les professionnels de santé à Ankara depuis 2010. Nous construisons l'avenir avec des solutions médicales modernes.",
+          "ar": "نحن مع المهنيين الصحيين في أنقرة منذ عام 2010. نحن نبني المستقبل بحلول طبية حديثة."
+        },
+        "stats": [
+          {
+            "value": "15+",
+            "label": {
+              "tr": "Yıllık Deneyim",
+              "en": "Years of Experience",
+              "de": "Jahrelange Erfahrung",
+              "fr": "Années d'expérience",
+              "ar": "سنوات من الخبرة"
+            },
+            "icon": "⏳"
+          },
+          {
+            "value": "500+",
+            "label": {
+              "tr": "Mutlu Müşteri",
+              "en": "Happy Clients",
+              "de": "Zufriedene Kunden",
+              "fr": "Clients Heureux",
+              "ar": "عملاء سعداء"
+            },
+            "icon": "😊"
+          },
+          {
+            "value": "1000+",
+            "label": {
+              "tr": "Ürün Çeşidi",
+              "en": "Product Varieties",
+              "de": "Produktvarianten",
+              "fr": "Variétés de produits",
+              "ar": "أصناف المنتجات"
+            },
+            "icon": "📦"
+          }
+        ]
+      }
+    }
+  ],
+  "why-us": [
+    {
+      "id": "why-us-1",
+      "type": "WhyUs",
+      "content": {
+        "title": {
+          "tr": "Neden Biz?",
+          "en": "Why Choose Us?",
+          "de": "Warum wir?",
+          "fr": "Pourquoi nous?",
+          "ar": "لماذا نحن؟"
+        },
+        "subtitle": {
+          "tr": "Farkımız",
+          "en": "Our Difference",
+          "de": "Unser Unterschied",
+          "fr": "Notre différence",
+          "ar": "اختلافنا"
+        },
+        "features": [
+          {
+            "key": "tech",
+            "icon": "🖥️",
+            "title": {
+              "tr": "Yenilikçi Teknoloji",
+              "en": "Innovative Technology",
+              "de": "Innovative Technologie",
+              "fr": "Technologie innovante",
+              "ar": "تكنولوجيا مبتكرة"
+            },
+            "desc": {
+              "tr": "En son medikal teknolojileri takip ediyor ve sunuyoruz.",
+              "en": "We follow and offer the latest medical technologies.",
+              "de": "Wir verfolgen und bieten die neuesten medizinischen Technologien an.",
+              "fr": "Nous suivons et proposons les dernières technologies médicales.",
+              "ar": "نحن نتبع ونقدم أحدث التقنيات الطبية."
+            }
+          },
+          {
+            "key": "team",
+            "icon": "👨‍⚕️",
+            "title": {
+              "tr": "Uzman Kadro",
+              "en": "Expert Team",
+              "de": "Expertenteam",
+              "fr": "Équipe d'experts",
+              "ar": "فريق خبراء"
+            },
+            "desc": {
+              "tr": "Sağlık sektöründe deneyimli profesyonellerle çalışıyoruz.",
+              "en": "We work with experienced professionals in the healthcare industry.",
+              "de": "Wir arbeiten mit erfahrenen Fachleuten aus der Gesundheitsbranche zusammen.",
+              "fr": "Nous travaillons avec des professionnels expérimentés du secteur de la santé.",
+              "ar": "نحن نعمل مع محترفين ذوي خبرة في صناعة الرعاية الصحية."
+            }
+          },
+          {
+            "key": "partnership",
+            "icon": "🤝",
+            "title": {
+              "tr": "Güçlü İş Ortağı",
+              "en": "Strong Partner",
+              "de": "Starker Partner",
+              "fr": "Partenaire solide",
+              "ar": "شريك قوي"
+            },
+            "desc": {
+              "tr": "Dünya devi üreticilerle güvene dayalı iş birliği.",
+              "en": "Trust-based cooperation with world giant manufacturers.",
+              "de": "Vertrauensvolle Zusammenarbeit mit weltweit führenden Herstellern.",
+              "fr": "Coopération basée sur la confiance avec les plus grands fabricants mondiaux.",
+              "ar": "تعاون قائم على الثقة مع كبار المصنعين العالميين."
+            }
+          },
+          {
+            "key": "network",
+            "icon": "🌍",
+            "title": {
+              "tr": "Geniş Ağ",
+              "en": "Wide Network",
+              "de": "Breites Netzwerk",
+              "fr": "Large réseau",
+              "ar": "شبكة واسعة"
+            },
+            "desc": {
+              "tr": "Türkiye ve dünyada geniş dağıtım ve lojistik ağı.",
+              "en": "Wide distribution and logistics network in Turkey and the world.",
+              "de": "Breites Vertriebs- und Logistiknetz in der Türkei und weltweit.",
+              "fr": "Vaste réseau de distribution et de logistique en Turquie et dans le monde.",
+              "ar": "شبكة توزيع ولوجستيات واسعة في تركيا والعالم."
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "footer": [
+    {
+      "id": "footer-1",
+      "type": "Footer",
+      "content": {
+        "description": {
+          "tr": "2010'dan beri Ankara'da sağlık profesyonellerinin çözüm ortağıyız. Hemodiyaliz kateterleri, infüzyon pompaları ve tıbbi sarf malzemelerinde A'dan Z'ye güvenilir temin.",
+          "en": "We have been the solution partner of health professionals in Ankara since 2010. Reliable supply from A to Z in hemodialysis catheters, infusion pumps and medical consumables.",
+          "de": "Seit 2010 sind wir der Lösungspartner für medizinisches Fachpersonal in Ankara. Zuverlässige Belieferung von A bis Z mit Hämodialysekathetern, Infusionspumpen und medizinischen Verbrauchsmaterialien.",
+          "fr": "Nous sommes le partenaire solution des professionnels de santé à Ankara depuis 2010. Fourniture fiable de A à Z en cathéters d'hémodialyse, pompes à perfusion et consommables médicaux.",
+          "ar": "لقد كنا شريك الحل للمهنيين الصحيين في أنقرة منذ عام 2010. توريد موثوق من الألف إلى الياء في قثاطير غسيل الكلى ومضخات التسريب والمستهلكات الطبية."
+        },
+        "poweredBy": "LeverTeknoDizayn"
+      }
+    }
+  ]
+}
