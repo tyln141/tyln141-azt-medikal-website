@@ -15,13 +15,14 @@ import { Product, SiteSettings } from "../types";
  * Reads a single document from a collection.
  * Returns defaultValue if document doesn't exist.
  */
-export async function readDoc(col: string, id: string, defaultValue: any = {}) {
+export async function readDoc(col: string, id: string, defaultValue: any = null) {
     try {
         const docRef = doc(db, col, id);
         const docSnap = await getDoc(docRef);
         
         if (docSnap.exists()) {
-            return docSnap.data();
+            const data = docSnap.data();
+            if (data && Object.keys(data).length > 0) return data;
         }
         return defaultValue;
     } catch (error) {
@@ -53,7 +54,7 @@ export async function writeDoc(col: string, id: string, data: any) {
  * Reads an entire collection as an array of objects.
  * Each object includes an 'id' field from the document ID.
  */
-export async function readCollection(col: string) {
+export async function readCollection(col: string, fallback: any[] = []) {
     try {
         const colRef = collection(db, col);
         const querySnapshot = await getDocs(colRef);
@@ -61,10 +62,12 @@ export async function readCollection(col: string) {
         querySnapshot.forEach((doc) => {
             data.push({ id: doc.id, ...doc.data() });
         });
+        
+        if (data.length === 0) return fallback;
         return data;
     } catch (error) {
         console.error(`Error reading collection ${col}:`, error);
-        return [];
+        return fallback;
     }
 }
 
@@ -92,6 +95,21 @@ export async function writeCollection(col: string, data: any[]) {
 // --- SEEDING DATA ---
 
 export const DEFAULT_SITE_CONTENT = {
+    hero: {
+        title: {
+            tr: "Sağlıkta Güven ve Yenilik: AZT Medikal",
+            en: "Trust and Innovation in Health: AZT Medical",
+            de: "Vertrauen und Innovation in der Gesundheit: AZT Medical",
+            fr: "Confiance et Innovation en Santé : AZT Medical"
+        },
+        subtitle: {
+            tr: "Modern tıbbın gereksinimlerine profesyonel çözümler üretiyoruz.",
+            en: "We produce professional solutions for the requirements of modern medicine.",
+            de: "Wir produzieren professionelle Lösungen für die Anforderungen der modernen Medizin.",
+            fr: "Nous produisons des solutions professionnelles pour les exigences de la médecine moderne."
+        },
+        image: "https://images.unsplash.com/photo-1512678080530-7760d81faba6?q=80\u0026w=1500"
+    },
     about: {
         title: {
             tr: "Hakkımızda",
@@ -100,10 +118,10 @@ export const DEFAULT_SITE_CONTENT = {
             fr: "À propos"
         },
         description: {
-            tr: "AZT Medikal, sağlık sektöründe yenilikçi ve güvenilir çözümler sunmak amacıyla kurulmuş, Ankara merkezli bir tıbbi cihaz ve sarf malzeme tedarikçisidir. 2010 yılından bu yana, 'A'dan Z'ye Temin' vizyonuyla, hastaneler ve sağlık kuruluşları için yüksek kaliteli ürünler ve kesintisiz teknik destek sağlamaktayız. Modern tıp teknolojilerini yerel saha tecrübesiyle birleştirerek, sağlık profesyonellerinin her türlü ihtiyacına profesyonel çözümler üretiyoruz. Güvenilirlik, dürüstlük ve hasta odaklılık temel değerlerimizdir.",
-            en: "AZT Medical is an Ankara-based medical device and consumable supplier established to provide innovative and reliable solutions in the healthcare sector. Since 2010, with our vision of 'A to Z Provision', we have been providing high-quality products and continuous technical support for hospitals and health institutions. By combining modern medical technologies with local field experience, we produce professional solutions for all types of healthcare professionals' needs. Reliability, integrity and patient orientation are our core values.",
-            de: "AZT Medikal ist ein in Ankara ansässiger Anbieter von Medizinprodukten und Verbrauchsmaterialien, der gegründet wurde, um innovative und zuverlässige Lösungen im Gesundheitssektor anzubieten. Seit 2010 bieten wir mit unserer Vision 'A bis Z Beschaffung' qualitativ hochwertige Produkte und kontinuierlichen technischen Support für Krankenhäuser und Gesundheitseinrichtungen an. Durch die Kombination moderner medizinischer Technologien mit lokaler Außendienst-Erfahrung produzieren wir professionelle Lösungen für alle Bedürfnisse des medizinischen Fachpersonals. Zuverlässigkeit, Integrität und Patientenorientierung sind unsere Grundwerte.",
-            fr: "AZT Medikal est un fournisseur de dispositifs médicaux et de consommables basé à Ankara, créé pour fournir des solutions innovantes et fiables dans le secteur de la santé. Depuis 2010, fort de notre vision d'Approvisionnement de A à Z', nous fournissons des produits de haute qualité et une assistance technique continue aux hôpitaux et aux établissements de santé. En combinant les technologies médicales modernes avec l'expérience locale sur le terrain, nous produisons des solutions professionnelles pour tous les besoins des professionnels de santé. La fiabilité, l'intégrité et l'orientation patient sont nos valeurs fondamentales."
+            tr: "AZT Medikal, sağlık sektöründe yenilikçi ve güvenilir çözümler sunmak amacıyla kurulmuş, Ankara merkezli bir tıbbi cihaz ve sarf malzeme tedarikçisidir. 2010 yılından bu yana, 'A'dan Z'ye Temin' vizyonuyla, hastaneler ve sağlık kuruluşları için yüksek kaliteli ürünler ve kesintisiz teknik destek sağlamaktayız.",
+            en: "AZT Medical is an Ankara-based medical device and consumable supplier established to provide innovative and reliable solutions in the healthcare sector. Since 2010, with our vision of 'A to Z Provision', we have been providing high-quality products and continuous technical support for hospitals and health institutions.",
+            de: "AZT Medikal ist ein in Ankara ansässiger Anbieter von Medizinprodukten und Verbrauchsmaterialien. Seit 2010 bieten wir mit unserer Vision 'A bis Z Beschaffung' qualitativ hochwertige Produkte und kontinuierlichen technischen Support.",
+            fr: "AZT Medikal est un fournisseur de dispositifs médicaux et de consommables basé à Ankara. Depuis 2010, fort de notre vision d'Approvisionnement de A à Z', nous fournissons des produits de haute qualité et une assistance technique continue."
         },
         stats: [
             { value: "15+", label: { tr: "Yıl Tecrübe", en: "Years Experience", de: "Jahre Erfahrung", fr: "Années d'expérience" } },
@@ -112,9 +130,7 @@ export const DEFAULT_SITE_CONTENT = {
         ],
         image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80\u0026w=1000",
         imageWidth: "100%",
-        imageHeight: "400px",
-        imageFit: "cover",
-        imagePosition: "center"
+        imageHeight: "400px"
     },
     whyUs: {
         title: {
@@ -130,38 +146,38 @@ export const DEFAULT_SITE_CONTENT = {
                 description: {
                     tr: "En son tıbbi teknolojileri ve inovatif çözümleri sağlık kurumlarına ulaştırıyoruz.",
                     en: "We deliver the latest medical technologies and innovative solutions to health institutions.",
-                    de: "Wir liefern die neuesten medizinischen Technologien und innovativen Lösungen an Gesundheitseinrichtungen.",
-                    fr: "Nous livrons les dernières technologies médicales et des solutions innovantes aux établissements de santé."
-                }
-            },
-            {
-                icon: "🛡️",
-                title: { tr: "Güvenilirlik", en: "Reliability", de: "Zuverlässigkeit", fr: "Fiabilité" },
-                description: {
-                    tr: "Sertifikalı ürünlerimiz ve şeffaf hizmet anlayışımızla sektörde güven inşa ediyoruz.",
-                    en: "We build trust in the sector with our certified products and transparent service approach.",
-                    de: "Wir bauen Vertrauen in der Branche mit unseren zertifizierten Produkten und unserem transparenten Serviceansatz auf.",
-                    fr: "Nous construisons la confiance dans le secteur avec nos produits certifiés et notre approche de service transparente."
+                    de: "Wir liefern die neuesten medizinischen Technologien.",
+                    fr: "Nous livrons les dernières technologies médicales."
                 }
             },
             {
                 icon: "👨‍⚕️",
-                title: { tr: "Uzman Kadro", en: "Expert Team", de: "Expertenteam", fr: "Équipe experte" },
+                title: { tr: "Uzman Kadro", en: "Expert Staff", de: "Fachpersonal", fr: "Personnel expert" },
                 description: {
                     tr: "Alanında uzman teknik ekibimizle profesyonel danışmanlık ve destek sağlıyoruz.",
                     en: "We provide professional consultancy and support with our expert technical team.",
-                    de: "Wir bieten professionelle Beratung und Unterstützung mit unserem kompetenten technischen Team.",
-                    fr: "Nous fournissons des conseils et un soutien professionnels avec notre équipe technique d'experts."
+                    de: "Wir bieten professionelle Beratung an.",
+                    fr: "Nous fournissons des conseils professionnels."
                 }
             },
             {
-                icon: "⚡",
-                title: { tr: "Hızlı Hizmet", en: "Fast Service", de: "Schneller Service", fr: "Service rapide" },
+                icon: "🤝",
+                title: { tr: "Çözüm Ortaklığı", en: "Solution Partnership", de: "Lösungspartnerschaft", fr: "Partenariat de solution" },
                 description: {
-                    tr: "Güçlü lojistik ağımız sayesinde ihtiyaçlarınıza en hızlı şekilde yanıt veriyoruz.",
-                    en: "Thanks to our strong logistics network, we respond to your needs in the fastest way.",
-                    de: "Dank unseres starken Logistiknetzwerks reagieren wir auf Ihre Bedürfnisse auf dem schnellsten Weg.",
-                    fr: "Grâce à notre solide réseau logistique, nous répondons à vos besoins de la manière la plus rapide."
+                    tr: "Hastaneler ve kliniklerle uzun vadeli, güvene dayalı iş ortaklıkları kuruyoruz.",
+                    en: "We establish long-term, trust-based partnerships with hospitals and clinics.",
+                    de: "Wir führen langfristige Partnerschaften.",
+                    fr: "Nous établissons des partenariats à long terme."
+                }
+            },
+            {
+                icon: "🌐",
+                title: { tr: "Geniş Tedarik Ağı", en: "Wide Supply Network", de: "Breites Liefernetzwerk", fr: "Large réseau d'approvisionnement" },
+                description: {
+                    tr: "Dünya çapındaki güçlü tedarik zincirimizle her türlü tıbbi ihtiyaca yanıt veriyoruz.",
+                    en: "We respond to all kinds of medical needs with our strong global supply chain.",
+                    de: "Wir verfügen über ein globales Liefernetzwerk.",
+                    fr: "Nous disposons d'un réseau d'approvisionnement mondial."
                 }
             }
         ]
@@ -405,3 +421,21 @@ export const DEFAULT_PRODUCTS: Product[] = [
         }
     }
 ];
+
+export const DEFAULT_SITE_SETTINGS: SiteSettings = {
+    contactEmail: "info@aztmedikal.com",
+    contactPhone: "+90 312 000 00 00",
+    address: "Ankara, Türkiye",
+    workingHours: "09:00 - 18:00",
+    footerCredit: "© 2024 AZT Medikal",
+    logo: "/logo.png",
+    favicon: "/favicon.ico",
+    headerLayout: "standard",
+    footerText: "Sağlıkta güvenilir çözüm ortağınız.",
+    poweredBy: "LeverPlay",
+    socialLinks: {
+        facebook: "https://facebook.com/aztmedikal",
+        instagram: "https://instagram.com/aztmedikal",
+        linkedin: "https://linkedin.com/company/aztmedikal"
+    }
+};

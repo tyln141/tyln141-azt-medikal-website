@@ -51,3 +51,12 @@ export interface ThemeSettings {
         imageRatio: string;
     };
 }
+
+export interface Message {
+    id: string;
+    name: string;
+    email: string;
+    message: string;
+    createdAt: string;
+    isRead: boolean;
+}
