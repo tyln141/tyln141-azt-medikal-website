@@ -18,12 +18,20 @@ export default function Logo() {
 
     return (
         <Link href="/" className="flex items-center gap-3 group">
-            {siteSettings?.logo ? (
-                <img src={siteSettings.logo} alt="AZT Logo" className="h-10 w-auto object-contain" />
+            {siteSettings?.logo && !hasError ? (
+                <img 
+                    src={siteSettings.logo} 
+                    alt="AZT Logo" 
+                    className="h-10 w-auto object-contain" 
+                    onError={() => setHasError(true)}
+                />
             ) : (
-                <span className="font-bold text-xl tracking-tight text-dark group-hover:text-primary transition-colors">
-                    AZT <span className="text-primary font-medium group-hover:text-dark">Medikal</span>
-                </span>
+                <div className="flex items-center gap-2">
+                    <img src="/logo.png" alt="AZT" className="h-8 w-auto" onError={(e) => (e.currentTarget.style.display = 'none')} />
+                    <span className="font-bold text-xl tracking-tight text-dark group-hover:text-primary transition-colors">
+                        AZT <span className="text-primary font-medium group-hover:text-dark">Medikal</span>
+                    </span>
+                </div>
             )}
         </Link>
     );

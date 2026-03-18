@@ -26,7 +26,8 @@ export default function ContactSection({ content, language }: ContactProps) {
             email: (form.elements.namedItem('email') as HTMLInputElement).value,
             phone: (form.elements.namedItem('phone') as HTMLInputElement).value,
             message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
-            productName: 'Genel İletişim / Teklif Talebi'
+            productName: 'Genel İletişim / Teklif Talebi',
+            isRead: false
         };
 
         try {

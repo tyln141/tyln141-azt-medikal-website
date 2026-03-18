@@ -18,7 +18,7 @@ export default function WhyUsSection({ content, language }: WhyUsProps) {
     const getText = (textObj: any) => textObj?.[lang] || textObj?.['tr'] || "";
 
     return (
-        <section className="py-32 bg-gray-50/50 overflow-hidden">
+        <section id="why-us" className="py-32 bg-gray-50/50 overflow-hidden">
             <Container>
                 <div className="text-center mb-20 animate-fade-in">
                     <SectionTitle

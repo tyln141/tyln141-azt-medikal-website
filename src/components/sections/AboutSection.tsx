@@ -13,6 +13,7 @@ export default function AboutSection({ content, language }: AboutSectionProps) {
     if (!content) return null;
 
     const lang = language || 'tr';
+
     const {
         title = {},
         description = {},
@@ -23,7 +24,7 @@ export default function AboutSection({ content, language }: AboutSectionProps) {
     const getText = (textObj: any) => textObj?.[lang] || textObj?.['tr'] || "";
 
     return (
-        <section className="py-32 bg-white overflow-hidden">
+        <section id="why-us" className="py-32 bg-gray-50/50 overflow-hidden">
             <Container>
                 <div className="flex flex-col lg:flex-row gap-20 items-center">
                     {/* LEFT: TITLE + DESCRIPTION */}

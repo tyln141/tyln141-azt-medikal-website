@@ -24,7 +24,15 @@ export async function readDoc(col: string, id: string, defaultValue: any = null)
             const data = docSnap.data();
             if (data && Object.keys(data).length > 0) return data;
         }
-        return defaultValue;
+
+        // AUTO-SEED: If document doesn't exist, write default and return it
+        if (defaultValue) {
+            console.log(`Auto-seeding doc ${col}/${id} with defaults`);
+            await setDoc(docRef, defaultValue, { merge: true });
+            return defaultValue;
+        }
+
+        return null;
     } catch (error) {
         console.error(`Error reading doc ${col}/${id}:`, error);
         return defaultValue;
@@ -63,7 +71,13 @@ export async function readCollection(col: string, fallback: any[] = []) {
             data.push({ id: doc.id, ...doc.data() });
         });
         
-        if (data.length === 0) return fallback;
+        // AUTO-SEED: If collection is empty, write fallbacks and return them
+        if (data.length === 0 && fallback.length > 0) {
+            console.log(`Auto-seeding collection ${col} with ${fallback.length} items`);
+            await writeCollection(col, fallback);
+            return fallback;
+        }
+
         return data;
     } catch (error) {
         console.error(`Error reading collection ${col}:`, error);

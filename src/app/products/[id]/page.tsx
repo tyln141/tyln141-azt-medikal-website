@@ -69,9 +69,21 @@ export default function ProductDetail() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-50" />
               <div className="absolute -top-1/4 -right-1/4 w-[150%] h-[150%] bg-white/40 blur-[80px] rounded-full group-hover:scale-110 transition-transform duration-1000 z-0" />
 
-              <div className="relative text-9xl z-10 text-primary/20 drop-shadow-sm group-hover:scale-110 group-hover:text-primary/40 transition-all duration-700">
-                ⚕️
-              </div>
+              {product?.image ? (
+                <img 
+                  src={`${product.image}?t=${Date.now()}`} 
+                  alt={getValue(product.name, language)} 
+                  className="w-full h-full object-contain p-12 transition-transform duration-700 group-hover:scale-105"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = '/placeholder.png';
+                  }}
+                />
+              ) : (
+                <div className="relative text-9xl z-10 text-primary/20 drop-shadow-sm group-hover:scale-110 group-hover:text-primary/40 transition-all duration-700">
+                  ⚕️
+                </div>
+              )}
 
               <div className="absolute top-8 left-8 z-20">
                 <span className="bg-white/90 backdrop-blur-md border border-white/50 text-dark text-xs sm:text-sm font-extrabold uppercase tracking-widest px-6 py-2.5 rounded-full shadow-lg shadow-primary/5">

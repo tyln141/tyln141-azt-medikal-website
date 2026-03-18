@@ -14,9 +14,13 @@ interface HeroProps {
 }
 
 export default function HeroSection({ content, language }: HeroProps) {
-    if (!content) return null;
-    
-    const { title = {} as Record<Language, string>, subtitle = {} as Record<Language, string>, buttonText = {} as Record<Language, string>, buttonLink = '/products', backgroundImage } = content || {};
+    const { 
+        title = {} as any, 
+        subtitle = {} as any, 
+        buttonText = {} as any, 
+        buttonLink = '/products', 
+        backgroundImage 
+    } = content || {};
 
     return (
         <section className="relative min-h-[90vh] flex items-center pt-24 pb-16 overflow-hidden">

@@ -89,10 +89,24 @@ export default function AdminProducts() {
         setView('form');
     };
 
-    const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        alert('Yerel dosya yükleme devre dışı bırakıldı. Lütfen Firestore veya harici bir URL kullanın.');
-        console.warn('Local uploads are disabled as per new requirements.');
-        e.target.value = '';
+    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        if (file.size > 2 * 1024 * 1024) {
+            alert('Dosya boyutu 2MB üzerinde olamaz.');
+            return;
+        }
+
+        setUploading(true);
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            const base64 = reader.result as string;
+            setFormData(prev => ({ ...prev, image: base64 }));
+            setUploading(false);
+            markDirty();
+        };
+        reader.readAsDataURL(file);
     };
 
     const handleRemoveImage = () => {
@@ -182,13 +196,26 @@ export default function AdminProducts() {
                                 Ürün Görsel URL (Örn: https://...)
                             </label>
                             <div className="flex flex-col gap-4">
-                                <input
-                                    type="text"
-                                    placeholder="https://images.unsplash.com/..."
-                                    className="w-full px-5 py-3 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none font-medium text-dark shadow-sm"
-                                    value={formData.image || ''}
-                                    onChange={e => { markDirty(); setFormData({ ...formData, image: e.target.value }); }}
-                                />
+                                <div className="flex gap-4 items-center">
+                                    <input
+                                        type="text"
+                                        placeholder="https://images.unsplash.com/..."
+                                        className="flex-1 px-5 py-3 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none font-medium text-dark shadow-sm"
+                                        value={formData.image || ''}
+                                        onChange={e => { markDirty(); setFormData({ ...formData, image: e.target.value }); }}
+                                    />
+                                    <div className="relative">
+                                        <input
+                                            type="file"
+                                            accept="image/*"
+                                            onChange={handleImageUpload}
+                                            className="absolute inset-0 opacity-0 cursor-pointer"
+                                        />
+                                        <button type="button" className="btn btn-outline whitespace-nowrap px-6 py-3 rounded-2xl border-dashed border-2 hover:border-primary hover:text-primary transition-all">
+                                            {uploading ? 'Yükleniyor...' : 'Dosya Seç'}
+                                        </button>
+                                    </div>
+                                </div>
                                 {formData.image && (
                                     <div className="relative group w-32 h-32 rounded-2xl bg-gray-50 border overflow-hidden shadow-sm">
                                         <img src={formData.image} alt="Preview" className="w-full h-full object-cover" />

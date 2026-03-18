@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { getValue } from '@/lib/i18n';
+import Image from 'next/image';
 
 const LANGUAGES = [
     { code: 'tr', name: 'TR' },
@@ -24,6 +25,7 @@ export default function AdminPages() {
     const [saving, setSaving] = useState(false);
     const [activePage, setActivePage] = useState<string>('home');
     const [activeLang, setActiveLang] = useState<string>('tr');
+    const [uploading, setUploading] = useState(false);
 
     useEffect(() => {
         loadData();
@@ -120,6 +122,41 @@ export default function AdminPages() {
         setPagesData({ ...pagesData, [page]: sections });
     };
 
+    const handleImageUpload = (page: string, index: number, field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        if (file.size > 2 * 1024 * 1024) {
+            alert('Dosya boyutu 2MB üzerinde olamaz.');
+            return;
+        }
+
+        setUploading(true);
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            const base64 = reader.result as string;
+            updateContent(page, index, field, base64);
+            setUploading(false);
+        };
+        reader.readAsDataURL(file);
+    };
+
+    const handleLogoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        
+        setUploading(true);
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setPagesData({ 
+                ...pagesData, 
+                siteSettings: { ...pagesData.siteSettings, logo: reader.result as string } 
+            });
+            setUploading(false);
+        };
+        reader.readAsDataURL(file);
+    };
+
     const addSection = (page: string, type: string) => {
         const sections = pagesData[page] ? [...pagesData[page]] : [];
         const newSection = {
@@ -214,14 +251,20 @@ export default function AdminPages() {
                                         <div className="md:col-span-2">
                                             <label className="block text-sm font-bold text-gray-400 mb-3 uppercase tracking-wider">Arka Plan Görsel URL</label>
                                             <div className="flex flex-col gap-4">
-                                                <input type="text" className="w-full px-6 py-4 bg-gray-50 border-transparent rounded-2xl focus:bg-white focus:border-primary transition-all outline-none font-medium" value={section.content.backgroundImage || ''} onChange={(e) => updateContent(activePage, idx, 'backgroundImage', e.target.value)} placeholder="https://... (Örn: Unsplash URL)" />
+                                                <div className="flex gap-4">
+                                                    <input type="text" className="flex-1 px-6 py-4 bg-gray-50 border-transparent rounded-2xl focus:bg-white focus:border-primary transition-all outline-none font-medium" value={section.content.backgroundImage || ''} onChange={(e) => updateContent(activePage, idx, 'backgroundImage', e.target.value)} placeholder="https://... (Örn: Unsplash URL)" />
+                                                    <div className="relative">
+                                                        <input type="file" accept="image/*" onChange={handleImageUpload(activePage, idx, 'backgroundImage')} className="absolute inset-0 opacity-0 cursor-pointer" />
+                                                        <button type="button" className="btn btn-outline h-full px-6 rounded-2xl border-dashed border-2">Dosya Seç</button>
+                                                    </div>
+                                                </div>
                                                 {section.content.backgroundImage && (
                                                     <div className="w-full h-40 rounded-2xl overflow-hidden border-4 border-white shadow-lg bg-gray-100 relative group">
                                                         <img src={section.content.backgroundImage} alt="Preview" className="w-full h-full object-cover" />
                                                         <button onClick={() => updateContent(activePage, idx, 'backgroundImage', '')} className="absolute inset-0 bg-red-500/80 text-white font-bold opacity-0 group-hover:opacity-100 transition-opacity">KALDIR</button>
                                                     </div>
                                                 )}
-                                                <p className="text-[10px] text-gray-400 italic font-medium pl-2">* Lütfen harici bir görsel URL'si kullanın.</p>
+                                                <p className="text-[10px] text-gray-400 italic font-medium pl-2">* Görsel URL girin veya cihazınızdan yükleyin.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -304,9 +347,15 @@ export default function AdminPages() {
                                     <button onClick={() => setPagesData({ ...pagesData, siteSettings: { ...pagesData.siteSettings, logo: '' } })} className="absolute inset-0 bg-red-500/80 text-white font-bold text-xs opacity-0 group-hover:opacity-100 transition-opacity">KALDIR</button>
                                 </div>
                                 <div className="flex-1 space-y-4">
-                                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest">Logo URL</label>
-                                    <input type="text" className="w-full px-6 py-4 bg-white border-gray-200 rounded-2xl focus:border-primary transition-all outline-none font-bold text-gray-700" value={pagesData.siteSettings?.logo || ''} onChange={(e) => setPagesData({ ...pagesData, siteSettings: { ...pagesData.siteSettings, logo: e.target.value } })} placeholder="https://.../logo.png" />
-                                    <p className="text-[10px] text-gray-400 italic font-medium">* Logo dosyasının tam URL'sini girin.</p>
+                                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest">Logo (URL veya Yükle)</label>
+                                    <div className="flex gap-4">
+                                        <input type="text" className="flex-1 px-6 py-4 bg-white border-gray-200 rounded-2xl focus:border-primary transition-all outline-none font-bold text-gray-700" value={pagesData.siteSettings?.logo || ''} onChange={(e) => setPagesData({ ...pagesData, siteSettings: { ...pagesData.siteSettings, logo: e.target.value } })} placeholder="https://.../logo.png" />
+                                        <div className="relative">
+                                            <input type="file" accept="image/*" onChange={handleLogoUpload} className="absolute inset-0 opacity-0 cursor-pointer" />
+                                            <button type="button" className="btn btn-outline h-full px-6 rounded-2xl border-dashed border-2">Yükle</button>
+                                        </div>
+                                    </div>
+                                    <p className="text-[10px] text-gray-400 italic font-medium pl-2">* Şeffaf arka planlı PNG önerilir.</p>
                                 </div>
                             </div>
                         </div>
