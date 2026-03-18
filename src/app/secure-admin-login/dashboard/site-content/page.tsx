@@ -54,8 +54,8 @@ export default function SiteContentAdmin() {
     const [saving, setSaving] = useState(false);
     const [formData, setFormData] = useState<SiteContent | null>(null);
 
-    useEffect(() => {
-        if (typeof window !== 'undefined') (window as any).__adminIsDirty = false;
+    const fetchData = () => {
+        setLoading(true);
         fetch('/api/site-content')
             .then(res => res.json())
             .then(data => {
@@ -68,6 +68,11 @@ export default function SiteContentAdmin() {
                 alert('İçerik yüklenemedi');
                 setLoading(false);
             });
+    };
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') (window as any).__adminIsDirty = false;
+        fetchData();
     }, []);
 
     const markDirty = () => {
@@ -83,13 +88,18 @@ export default function SiteContentAdmin() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             });
-            if (res.ok) {
+            const result = await res.json();
+            console.log("SAVE RESULT:", result);
+
+            if (result.success) {
                 if (typeof window !== 'undefined') (window as any).__adminIsDirty = false;
                 alert('Değişiklikler başarıyla kaydedildi');
+                window.location.reload();
             } else {
-                throw new Error('Save failed');
+                alert('Save failed: ' + (result.error || 'Unknown error'));
             }
-        } catch (err) {
+        } catch (err: any) {
+            console.error("SAVE ERROR:", err);
             alert('Kaydedilirken bir hata oluştu');
         } finally {
             setSaving(false);
@@ -151,22 +161,8 @@ export default function SiteContentAdmin() {
     };
 
     const handleImageUpload = async (file: File, callback: (url: string) => void) => {
-        const formDataUpload = new FormData();
-        formDataUpload.append('file', file);
-        try {
-            const res = await fetch('/api/media/upload', {
-                method: 'POST',
-                body: formDataUpload
-            });
-            const data = await res.json();
-            if (data.url) {
-                callback(data.url);
-            } else {
-                alert('Yükleme başarısız oldu.');
-            }
-        } catch (err) {
-            alert('Görsel yüklenirken bir hata oluştu');
-        }
+        alert('Yerel dosya yükleme devre dışı bırakıldı. Lütfen Firestore veya harici bir URL kullanın.');
+        console.warn('Local uploads are disabled as per new requirements.');
     };
 
     const updateAboutImage = (url: string) => {

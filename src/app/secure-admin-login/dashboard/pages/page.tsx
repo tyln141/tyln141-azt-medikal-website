@@ -49,12 +49,15 @@ export default function AdminPages() {
         try {
             const { siteSettings, ...contentData } = pagesData;
             
-            await fetch('/api/data/content', { 
+            const res = await fetch('/api/data/content', { 
                 method: 'POST', 
                 headers: { 'Content-Type': 'application/json' }, 
                 body: JSON.stringify(contentData) 
             });
             
+            const result = await res.json();
+            console.log("SAVE RESULT:", result);
+
             if (siteSettings) {
                 await fetch('/api/data/site-settings', { 
                     method: 'POST', 
@@ -63,8 +66,14 @@ export default function AdminPages() {
                 });
             }
             
-            alert("Değişiklikler başarıyla kaydedildi!");
+            if (result.success) {
+                alert("Değişiklikler başarıyla kaydedildi!");
+                window.location.reload();
+            } else {
+                alert("Save failed: " + (result.error || "Unknown error"));
+            }
         } catch (e) {
+            console.error("SAVE ERROR:", e);
             alert("Hata oluştu.");
         } finally {
             setSaving(false);
@@ -207,20 +216,7 @@ export default function AdminPages() {
                                             <div className="flex gap-4">
                                                 <input type="text" className="flex-1 px-6 py-4 bg-gray-50 border-transparent rounded-2xl focus:bg-white focus:border-primary transition-all outline-none font-medium" value={section.content.backgroundImage || ''} onChange={(e) => updateContent(activePage, idx, 'backgroundImage', e.target.value)} placeholder="/uploads/image.jpg" />
                                                 <button onClick={() => {
-                                                    const input = document.createElement('input');
-                                                    input.type = 'file';
-                                                    input.accept = 'image/*';
-                                                    input.onchange = async (e: any) => {
-                                                        const file = e.target.files[0];
-                                                        if (file) {
-                                                            const formData = new FormData();
-                                                            formData.append('file', file);
-                                                            const res = await fetch('/api/media', { method: 'POST', body: formData });
-                                                            const data = await res.json();
-                                                            if (data.url) updateContent(activePage, idx, 'backgroundImage', data.url);
-                                                        }
-                                                    };
-                                                    input.click();
+                                                    alert('Yerel dosya yükleme devre dışı bırakıldı. Lütfen harici bir URL kullanın.');
                                                 }} className="px-6 py-4 bg-primary text-white rounded-2xl font-bold hover:bg-primary/90 transition-all flex items-center gap-2"><span>📷</span> Yükle</button>
                                             </div>
                                         </div>
@@ -305,20 +301,7 @@ export default function AdminPages() {
                                 <div className="flex gap-4">
                                     <input type="text" className="flex-1 px-6 py-4 bg-white border-gray-200 rounded-2xl focus:border-primary transition-all outline-none font-bold text-gray-700" value={pagesData.siteSettings?.logo || ''} onChange={(e) => setPagesData({ ...pagesData, siteSettings: { ...pagesData.siteSettings, logo: e.target.value } })} placeholder="/logo.png" />
                                     <button onClick={() => {
-                                        const input = document.createElement('input');
-                                        input.type = 'file';
-                                        input.accept = 'image/*';
-                                        input.onchange = async (e: any) => {
-                                            const file = e.target.files[0];
-                                            if (file) {
-                                                const formData = new FormData();
-                                                formData.append('file', file);
-                                                const res = await fetch('/api/media/upload', { method: 'POST', body: formData });
-                                                const data = await res.json();
-                                                if (data.url) setPagesData({ ...pagesData, siteSettings: { ...pagesData.siteSettings, logo: data.url } });
-                                            }
-                                        };
-                                        input.click();
+                                        alert('Yerel dosya yükleme devre dışı bırakıldı. Lütfen harici bir URL kullanın.');
                                     }} className="px-8 py-4 bg-primary text-white rounded-2xl font-bold hover:bg-primary/90 transition-all flex items-center gap-3 shadow-lg shadow-primary/20"><span>📷</span> Logo Yükle</button>
                                 </div>
                             </div>

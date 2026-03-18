@@ -10,14 +10,14 @@ interface AppContextType {
     products: Product[];
     language: Language;
     setLanguage: (lang: Language) => void;
-    addProduct: (product: Product) => void;
-    deleteProduct: (id: string) => void;
-    updateProducts: (products: Product[]) => void;
+    addProduct: (product: Product) => Promise<{ success: boolean; error?: string }>;
+    deleteProduct: (id: string) => Promise<{ success: boolean; error?: string }>;
+    updateProducts: (products: Product[]) => Promise<{ success: boolean; error?: string }>;
     t: ReturnType<typeof getTranslation>;
     siteSettings: SiteSettings;
-    updateSiteSettings: (settings: SiteSettings) => void;
+    updateSiteSettings: (settings: SiteSettings) => Promise<{ success: boolean; error?: string }>;
     theme: ThemeSettings;
-    updateTheme: (theme: ThemeSettings) => void;
+    updateTheme: (theme: ThemeSettings) => Promise<{ success: boolean; error?: string }>;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -140,17 +140,24 @@ export function AppProvider({ children }: { children: ReactNode }) {
         const safeProducts = Array.isArray(newProducts) ? newProducts : [];
         setProducts(safeProducts);
         try {
-            await fetch('/api/products', {
+            const res = await fetch('/api/products', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(safeProducts)
             });
-            // Force re-fetch from dynamic data immediately to ensure frontend sees true state
-            const r = await fetch('/api/data/products');
-            const data = await r.json();
-            setProducts(Array.isArray(data) ? data : []);
-        } catch (e) {
+            const result = await res.json();
+            console.log("SYNC PRODUCTS RESULT:", result);
+            
+            if (result.success) {
+                // Force re-fetch from dynamic data immediately to ensure frontend sees true state
+                const r = await fetch('/api/data/products');
+                const data = await r.json();
+                setProducts(Array.isArray(data) ? data : []);
+            }
+            return result;
+        } catch (e: any) {
             console.error("Failed to sync products", e);
+            return { success: false, error: e.message };
         }
     };
 
@@ -161,26 +168,34 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const updateSiteSettings = async (settings: SiteSettings) => {
         setSiteSettings(prev => ({ ...prev, ...settings }));
         try {
-            await fetch('/api/settings', {
+            const res = await fetch('/api/settings', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(settings || {})
             });
-        } catch (e) {
+            const result = await res.json();
+            console.log("UPDATE SITE SETTINGS RESULT:", result);
+            return result;
+        } catch (e: any) {
             console.error("Failed to update site settings", e);
+            return { success: false, error: e.message };
         }
     }
 
     const updateTheme = async (newTheme: ThemeSettings) => {
         setTheme(prev => ({ ...prev, ...newTheme }));
         try {
-            await fetch('/api/theme', {
+            const res = await fetch('/api/theme', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newTheme || {})
             });
-        } catch (e) {
+            const result = await res.json();
+            console.log("UPDATE THEME RESULT:", result);
+            return result;
+        } catch (e: any) {
             console.error("Failed to update theme", e);
+            return { success: false, error: e.message };
         }
     }
 

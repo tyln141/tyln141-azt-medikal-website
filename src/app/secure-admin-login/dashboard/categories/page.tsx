@@ -42,14 +42,23 @@ export default function AdminCategories() {
 
     const saveCategories = async (newCategories: Category[]) => {
         try {
-            await fetch('/api/categories', {
+            const res = await fetch('/api/categories', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newCategories)
             });
-            setCategories(newCategories);
-        } catch (e) {
+            const result = await res.json();
+            console.log("SAVE RESULT:", result);
+
+            if (result.success) {
+                alert('Kategoriler başarıyla kaydedildi');
+                window.location.reload();
+            } else {
+                alert('Save failed: ' + (result.error || 'Unknown error'));
+            }
+        } catch (e: any) {
             console.error("Failed to save categories", e);
+            alert('Kaydedilirken bir hata oluştu');
         }
     };
 

@@ -1,38 +1,34 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import { readDoc, writeDoc } from '@/lib/firestoreStore';
 
 export const dynamic = 'force-dynamic';
 
+const DEFAULT_CONTENT = {
+    home: [],
+    about: [],
+    why_us: [],
+    footer: []
+};
+
 export async function GET() {
     try {
-        const filePath = path.join(process.cwd(), 'src/data/content.json');
-
-        if (!fs.existsSync(filePath)) {
-            const defaultContent = {
-                home: [],
-                about: [],
-                why_us: [],
-                footer: []
-            };
-            fs.writeFileSync(filePath, JSON.stringify(defaultContent, null, 2));
-            return NextResponse.json(defaultContent);
-        }
-
-        const fileContent = fs.readFileSync(filePath, 'utf8');
-        return NextResponse.json(JSON.parse(fileContent));
+        const data = await readDoc('siteContent', 'main', DEFAULT_CONTENT);
+        return NextResponse.json(data);
     } catch (error) {
-        return NextResponse.json({});
+        return NextResponse.json(DEFAULT_CONTENT);
     }
 }
 
 export async function POST(request: Request) {
     try {
-        const body = await request.json();
-        const filePath = path.join(process.cwd(), 'src/data/content.json');
-        fs.writeFileSync(filePath, JSON.stringify(body, null, 2));
+        const data = await request.json();
+        await writeDoc('siteContent', 'main', data);
         return NextResponse.json({ success: true });
-    } catch (error) {
-        return NextResponse.json({ error: 'Failed to update content' }, { status: 500 });
+    } catch (error: any) {
+        console.error("API ERROR:", error);
+        return NextResponse.json(
+            { success: false, error: error.message },
+            { status: 500 }
+        );
     }
 }

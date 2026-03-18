@@ -51,7 +51,7 @@ export default function ContactSection({ content, language }: ContactProps) {
             <Container>
                 <div className="max-w-4xl mx-auto bg-white rounded-[3rem] p-12 md:p-20 shadow-xl border border-gray-100">
                     <SectionTitle
-                        title={content.title[language] || content.title['tr']}
+                        title={content?.title?.[language] || content?.title?.['tr'] || ''}
                         center={true}
                         className="mb-12"
                     />

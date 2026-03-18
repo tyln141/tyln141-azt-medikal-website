@@ -1,38 +1,34 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import { readDoc, writeDoc } from '@/lib/firestoreStore';
 
 export const dynamic = 'force-dynamic';
 
+const DEFAULT_SETTINGS = {
+    primaryColor: "#0A6CFF",
+    backgroundColor: "#ffffff",
+    font: "Inter",
+    logo: "/logo.png"
+};
+
 export async function GET() {
     try {
-        const filePath = path.join(process.cwd(), 'src/data/siteSettings.json');
-        
-        if (!fs.existsSync(filePath)) {
-            const defaultSettings = {
-                primaryColor: "#0A6CFF",
-                backgroundColor: "#ffffff",
-                font: "Inter",
-                logo: "/logo.png"
-            };
-            fs.writeFileSync(filePath, JSON.stringify(defaultSettings, null, 2));
-            return NextResponse.json(defaultSettings);
-        }
-
-        const fileContent = fs.readFileSync(filePath, 'utf8');
-        return NextResponse.json(JSON.parse(fileContent));
+        const data = await readDoc('settings', 'site', DEFAULT_SETTINGS);
+        return NextResponse.json(data);
     } catch (error) {
-        return NextResponse.json({});
+        return NextResponse.json(DEFAULT_SETTINGS);
     }
 }
 
 export async function POST(request: Request) {
     try {
-        const body = await request.json();
-        const filePath = path.join(process.cwd(), 'src/data/siteSettings.json');
-        fs.writeFileSync(filePath, JSON.stringify(body, null, 2));
+        const data = await request.json();
+        await writeDoc('settings', 'site', data);
         return NextResponse.json({ success: true });
-    } catch (error) {
-        return NextResponse.json({ error: 'Failed to update site settings' }, { status: 500 });
+    } catch (error: any) {
+        console.error("API ERROR:", error);
+        return NextResponse.json(
+            { success: false, error: error.message },
+            { status: 500 }
+        );
     }
 }

@@ -1,15 +1,27 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import { readCollection, writeCollection } from '@/lib/firestoreStore';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
     try {
-        const filePath = path.join(process.cwd(), 'src/data/products.json');
-        const fileContent = fs.readFileSync(filePath, 'utf8');
-        return NextResponse.json(JSON.parse(fileContent));
+        const data = await readCollection('products');
+        return NextResponse.json(data);
     } catch (error) {
-        return NextResponse.json([]); // Return empty array if file doesn't exist
+        return NextResponse.json([]);
+    }
+}
+
+export async function POST(request: Request) {
+    try {
+        const data = await request.json();
+        await writeCollection('products', data);
+        return NextResponse.json({ success: true });
+    } catch (error: any) {
+        console.error("API ERROR:", error);
+        return NextResponse.json(
+            { success: false, error: error.message },
+            { status: 500 }
+        );
     }
 }

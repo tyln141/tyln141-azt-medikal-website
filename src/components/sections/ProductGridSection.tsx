@@ -21,20 +21,20 @@ export default function ProductGridSection({ content, language, products }: Prod
         <section className="py-32 relative">
             <Container>
                 <SectionTitle
-                    title={content.title[language] || content.title['tr']}
+                    title={content?.title?.[language] || content?.title?.['tr'] || ''}
                     center={true}
                     className="mb-20"
                 />
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {featuredProducts.map((product) => (
+                    {(products || []).slice(0, 4).map((product) => (
                         <div key={product.id} className="group bg-white rounded-3xl p-8 shadow-soft hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-gray-100 flex flex-col">
                             <div className="aspect-square bg-gray-50 rounded-2xl mb-6 overflow-hidden relative flex items-center justify-center">
-                                {product.image ? (
+                                {product?.image ? (
                                     <img 
                                         key={`${product.image}-${Date.now()}`}
                                         src={`${product.image}?t=${Date.now()}`} 
-                                        alt={product.name[language] || product.name['tr']} 
+                                        alt={product?.name?.[language] || product?.name?.['tr'] || ''} 
                                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                     />
                                 ) : (
@@ -42,10 +42,10 @@ export default function ProductGridSection({ content, language, products }: Prod
                                 )}
                             </div>
                             <h3 className="text-xl font-bold text-dark mb-2">
-                                {product.name[language] || product.name['tr']}
+                                {product?.name?.[language] || product?.name?.['tr'] || ''}
                             </h3>
                             <p className="text-gray-500 text-sm line-clamp-2 mb-6">
-                                {product.description[language] || product.description['tr']}
+                                {product?.description?.[language] || product?.description?.['tr'] || ''}
                             </p>
                             <Link href={`/products?id=${product.id}`} className="mt-auto text-primary font-bold inline-flex items-center gap-2 group/btn">
                                 {t("products.details")} <span className="group-hover/btn:translate-x-1 transition-transform">→</span>

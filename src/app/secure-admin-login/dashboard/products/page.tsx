@@ -44,9 +44,16 @@ export default function AdminProducts() {
         image: '',
     });
 
-    const handleDelete = (id: string) => {
+    const handleDelete = async (id: string) => {
         if (confirm('Bu ürünü silmek istediğinize emin misiniz?')) {
-            deleteProduct(id);
+            const result = await deleteProduct(id);
+            console.log("SAVE RESULT:", result);
+            if (result.success) {
+                alert('Ürün başarıyla silindi.');
+                window.location.reload();
+            } else {
+                alert('Delete failed: ' + (result.error || 'Unknown error'));
+            }
         }
     };
 
@@ -57,49 +64,37 @@ export default function AdminProducts() {
     };
 
     const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (!e.target.files?.[0]) return;
-
-        setUploading(true);
-        const file = e.target.files[0];
-        const data = new FormData();
-        data.append('file', file);
-
-        try {
-            const res = await fetch('/api/media/upload', {
-                method: 'POST',
-                body: data
-            });
-            const result = await res.json();
-            if (result.success) {
-                setFormData(prev => ({ ...prev, image: result.url }));
-            } else {
-                alert('Fotoğraf yüklenemedi: ' + result.error);
-            }
-        } catch (err) {
-            alert('Yükleme hatası oluştu!');
-        } finally {
-            setUploading(false);
-            e.target.value = ''; // Reset input to allow re-uploading same file
-        }
+        alert('Yerel dosya yükleme devre dışı bırakıldı. Lütfen Firestore veya harici bir URL kullanın.');
+        console.warn('Local uploads are disabled as per new requirements.');
+        e.target.value = '';
     };
 
     const handleRemoveImage = () => {
         setFormData(prev => ({ ...prev, image: "" }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (typeof window !== 'undefined') (window as any).__adminIsDirty = false;
 
+        let result;
         if (editId) {
             const safeProducts = Array.isArray(products) ? products : [];
             const updated = safeProducts.map(p => p.id === editId ? { ...formData, id: editId } as Product : p);
-            updateProducts(updated);
+            result = await updateProducts(updated);
         } else {
-            addProduct({
+            result = await addProduct({
                 ...formData,
                 id: `p-${Date.now()}`
             } as Product);
+        }
+
+        console.log("SAVE RESULT:", result);
+        if (result.success) {
+            alert(editId ? 'Ürün başarıyla güncellendi.' : 'Ürün başarıyla eklendi.');
+            window.location.reload();
+        } else {
+            alert('Save failed: ' + (result.error || 'Unknown error'));
         }
 
         setView('list');

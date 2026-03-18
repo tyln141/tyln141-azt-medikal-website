@@ -1,25 +1,25 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
-
-const DB_PATH = path.join(process.cwd(), 'src/data/products.json');
+import { readCollection, writeCollection } from '@/lib/firestoreStore';
 
 export async function GET() {
     try {
-        const data = fs.readFileSync(DB_PATH, 'utf8');
-        return NextResponse.json(JSON.parse(data));
+        const data = await readCollection('products');
+        return NextResponse.json(data);
     } catch (error) {
-        return NextResponse.json({ error: 'Failed to read products' }, { status: 500 });
+        return NextResponse.json([], { status: 500 });
     }
 }
 
 export async function POST(request: Request) {
     try {
-        // Write entire array at once for simplicity
-        const newProductsArray = await request.json();
-        fs.writeFileSync(DB_PATH, JSON.stringify(newProductsArray, null, 2));
+        const data = await request.json();
+        await writeCollection('products', data);
         return NextResponse.json({ success: true });
-    } catch (error) {
-        return NextResponse.json({ error: 'Failed to update products' }, { status: 500 });
+    } catch (error: any) {
+        console.error("API ERROR:", error);
+        return NextResponse.json(
+            { success: false, error: error.message },
+            { status: 500 }
+        );
     }
 }

@@ -1,21 +1,25 @@
 import { NextResponse } from 'next/server';
-import { readCollection, writeCollection } from '@/lib/jsonStore';
+import { readDoc, writeDoc } from '@/lib/firestoreStore';
 
 export async function GET() {
     try {
-        const data = readCollection('settings', {});
+        const data = await readDoc('settings', 'general', {});
         return NextResponse.json(data);
     } catch (error) {
-        return NextResponse.json({ error: 'Failed to read settings' }, { status: 500 });
+        return NextResponse.json({});
     }
 }
 
 export async function POST(request: Request) {
     try {
-        const body = await request.json();
-        writeCollection('settings', body);
-        return NextResponse.json({ success: true, data: body });
-    } catch (error) {
-        return NextResponse.json({ error: 'Failed to update settings' }, { status: 500 });
+        const data = await request.json();
+        await writeDoc('settings', 'general', data);
+        return NextResponse.json({ success: true });
+    } catch (error: any) {
+        console.error("API ERROR:", error);
+        return NextResponse.json(
+            { success: false, error: error.message },
+            { status: 500 }
+        );
     }
 }

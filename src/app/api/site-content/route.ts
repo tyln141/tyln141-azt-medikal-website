@@ -1,24 +1,38 @@
 import { NextResponse } from 'next/server';
-import { readCollection, writeCollection } from '@/lib/jsonStore';
+import { readDoc, writeDoc } from '@/lib/firestoreStore';
+
+const DEFAULT_CONTENT = {
+    about: { 
+        title: { tr: "Hakkımızda", en: "About Us" }, 
+        description: { tr: "", en: "" }, 
+        stats: [], 
+        image: "" 
+    },
+    whyUs: { 
+        title: { tr: "Neden Biz?", en: "Why Choose Us?" }, 
+        items: [] 
+    }
+};
 
 export async function GET() {
     try {
-        const data = readCollection('site-content', {
-            about: { title: {}, description: {}, stats: [], image: "" },
-            whyUs: { title: {}, items: [] }
-        });
+        const data = await readDoc('siteContent', 'main', DEFAULT_CONTENT);
         return NextResponse.json(data);
     } catch (error) {
-        return NextResponse.json({ error: 'Failed to read site content' }, { status: 500 });
+        return NextResponse.json(DEFAULT_CONTENT);
     }
 }
 
 export async function POST(request: Request) {
     try {
-        const body = await request.json();
-        writeCollection('site-content', body);
-        return NextResponse.json({ success: true, data: body });
-    } catch (error) {
-        return NextResponse.json({ error: 'Failed to update site content' }, { status: 500 });
+        const data = await request.json();
+        await writeDoc('siteContent', 'main', data);
+        return NextResponse.json({ success: true });
+    } catch (error: any) {
+        console.error("API ERROR:", error);
+        return NextResponse.json(
+            { success: false, error: error.message },
+            { status: 500 }
+        );
     }
 }
