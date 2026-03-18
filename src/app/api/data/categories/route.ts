@@ -1,14 +1,17 @@
 import { NextResponse } from 'next/server';
-import { readCollection, writeCollection } from '@/lib/firestoreStore';
+import { readCollection, writeCollection, DEFAULT_CATEGORIES } from '@/lib/firestoreStore';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
     try {
         const data = await readCollection('categories');
+        if (!data || data.length === 0) {
+            return NextResponse.json(DEFAULT_CATEGORIES);
+        }
         return NextResponse.json(data);
     } catch (error) {
-        return NextResponse.json([]);
+        return NextResponse.json(DEFAULT_CATEGORIES);
     }
 }
 

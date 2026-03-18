@@ -212,12 +212,16 @@ export default function AdminPages() {
                                             </>
                                         )}
                                         <div className="md:col-span-2">
-                                            <label className="block text-sm font-bold text-gray-400 mb-3 uppercase tracking-wider">Arka Plan Görseli</label>
-                                            <div className="flex gap-4">
-                                                <input type="text" className="flex-1 px-6 py-4 bg-gray-50 border-transparent rounded-2xl focus:bg-white focus:border-primary transition-all outline-none font-medium" value={section.content.backgroundImage || ''} onChange={(e) => updateContent(activePage, idx, 'backgroundImage', e.target.value)} placeholder="/uploads/image.jpg" />
-                                                <button onClick={() => {
-                                                    alert('Yerel dosya yükleme devre dışı bırakıldı. Lütfen harici bir URL kullanın.');
-                                                }} className="px-6 py-4 bg-primary text-white rounded-2xl font-bold hover:bg-primary/90 transition-all flex items-center gap-2"><span>📷</span> Yükle</button>
+                                            <label className="block text-sm font-bold text-gray-400 mb-3 uppercase tracking-wider">Arka Plan Görsel URL</label>
+                                            <div className="flex flex-col gap-4">
+                                                <input type="text" className="w-full px-6 py-4 bg-gray-50 border-transparent rounded-2xl focus:bg-white focus:border-primary transition-all outline-none font-medium" value={section.content.backgroundImage || ''} onChange={(e) => updateContent(activePage, idx, 'backgroundImage', e.target.value)} placeholder="https://... (Örn: Unsplash URL)" />
+                                                {section.content.backgroundImage && (
+                                                    <div className="w-full h-40 rounded-2xl overflow-hidden border-4 border-white shadow-lg bg-gray-100 relative group">
+                                                        <img src={section.content.backgroundImage} alt="Preview" className="w-full h-full object-cover" />
+                                                        <button onClick={() => updateContent(activePage, idx, 'backgroundImage', '')} className="absolute inset-0 bg-red-500/80 text-white font-bold opacity-0 group-hover:opacity-100 transition-opacity">KALDIR</button>
+                                                    </div>
+                                                )}
+                                                <p className="text-[10px] text-gray-400 italic font-medium pl-2">* Lütfen harici bir görsel URL'si kullanın.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -293,16 +297,16 @@ export default function AdminPages() {
                 <div className="mt-8 bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm">
                     <h3 className="text-xl font-bold text-dark mb-8 uppercase tracking-widest text-sm pb-6 border-b border-gray-50">Genel Site Ayarları</h3>
                     <div className="space-y-8">
-                        <div className="flex items-center gap-8 p-8 bg-gray-50 rounded-3xl border border-gray-100/50">
-                            <div className="w-24 h-24 bg-white rounded-2xl border border-gray-200 flex items-center justify-center overflow-hidden p-3 shadow-inner">
-                                <img src={pagesData.siteSettings?.logo || '/logo.png'} alt="Preview" className="max-w-full max-h-full object-contain" />
-                            </div>
-                            <div className="flex-1">
-                                <div className="flex gap-4">
-                                    <input type="text" className="flex-1 px-6 py-4 bg-white border-gray-200 rounded-2xl focus:border-primary transition-all outline-none font-bold text-gray-700" value={pagesData.siteSettings?.logo || ''} onChange={(e) => setPagesData({ ...pagesData, siteSettings: { ...pagesData.siteSettings, logo: e.target.value } })} placeholder="/logo.png" />
-                                    <button onClick={() => {
-                                        alert('Yerel dosya yükleme devre dışı bırakıldı. Lütfen harici bir URL kullanın.');
-                                    }} className="px-8 py-4 bg-primary text-white rounded-2xl font-bold hover:bg-primary/90 transition-all flex items-center gap-3 shadow-lg shadow-primary/20"><span>📷</span> Logo Yükle</button>
+                        <div className="flex flex-col gap-6 p-8 bg-gray-50 rounded-3xl border border-gray-100/50">
+                            <div className="flex items-center gap-8">
+                                <div className="w-32 h-32 bg-white rounded-2xl border border-gray-200 flex items-center justify-center overflow-hidden p-3 shadow-inner relative group">
+                                    <img src={pagesData.siteSettings?.logo || '/logo.png'} alt="Preview" className="max-w-full max-h-full object-contain" />
+                                    <button onClick={() => setPagesData({ ...pagesData, siteSettings: { ...pagesData.siteSettings, logo: '' } })} className="absolute inset-0 bg-red-500/80 text-white font-bold text-xs opacity-0 group-hover:opacity-100 transition-opacity">KALDIR</button>
+                                </div>
+                                <div className="flex-1 space-y-4">
+                                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest">Logo URL</label>
+                                    <input type="text" className="w-full px-6 py-4 bg-white border-gray-200 rounded-2xl focus:border-primary transition-all outline-none font-bold text-gray-700" value={pagesData.siteSettings?.logo || ''} onChange={(e) => setPagesData({ ...pagesData, siteSettings: { ...pagesData.siteSettings, logo: e.target.value } })} placeholder="https://.../logo.png" />
+                                    <p className="text-[10px] text-gray-400 italic font-medium">* Logo dosyasının tam URL'sini girin.</p>
                                 </div>
                             </div>
                         </div>

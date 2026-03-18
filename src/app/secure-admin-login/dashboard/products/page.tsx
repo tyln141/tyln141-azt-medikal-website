@@ -146,47 +146,30 @@ export default function AdminProducts() {
                             ))}
                         </div>
 
-                        {/* Image Manager with deletion support */}
+                        {/* Image Manager - URL Based */}
                         <div className="flex flex-col mb-4">
-                            <label className="block text-sm font-bold tracking-wide text-gray-700 mb-2">Ürün Görseli</label>
-                            <div className="flex items-center gap-6">
-                                {formData.image ? (
-                                    <>
-                                        <div className="w-24 h-24 rounded-2xl bg-gray-50 border border-gray-200 overflow-hidden flex-shrink-0 relative">
-                                            <img src={formData.image} alt="Preview" className="w-full h-full object-cover" />
-                                            {uploading && (
-                                                <div className="absolute inset-0 bg-white/60 flex items-center justify-center font-bold text-xs uppercase text-primary">Yükleniyor...</div>
-                                            )}
-                                        </div>
-                                        <div className="flex flex-col gap-2">
-                                            <label className="btn btn-outline bg-white border-gray-200 text-dark hover:bg-gray-50 cursor-pointer">
-                                                Değiştir
-                                                <input type="file" className="hidden" accept="image/jpeg, image/png, image/webp" onChange={handleImageUpload} disabled={uploading} />
-                                            </label>
-                                            <button 
-                                                type="button" 
-                                                onClick={handleRemoveImage} 
-                                                className="text-sm text-red-500 font-bold hover:text-red-600 transition-colors"
-                                            >
-                                                [ Fotoğrafı Kaldır ]
-                                            </button>
-                                        </div>
-                                    </>
-                                ) : (
-                                    <>
-                                        <div className="w-24 h-24 rounded-2xl bg-gray-50 border border-dashed border-gray-300 flex-shrink-0 relative">
-                                            <div className="w-full h-full flex items-center justify-center text-gray-400 text-3xl">📷</div>
-                                            {uploading && (
-                                                <div className="absolute inset-0 bg-white/60 flex items-center justify-center font-bold text-xs uppercase text-primary">Yükleniyor...</div>
-                                            )}
-                                        </div>
-                                        <div>
-                                            <label className="btn btn-outline bg-white border-gray-200 text-dark hover:bg-gray-50 cursor-pointer">
-                                                Fotoğraf Seç
-                                                <input type="file" className="hidden" accept="image/jpeg, image/png, image/webp" onChange={handleImageUpload} disabled={uploading} />
-                                            </label>
-                                        </div>
-                                    </>
+                            <label className="block text-sm font-bold tracking-wide text-gray-700 mb-2">
+                                Ürün Görsel URL (Örn: https://...)
+                            </label>
+                            <div className="flex flex-col gap-4">
+                                <input
+                                    type="text"
+                                    placeholder="https://images.unsplash.com/..."
+                                    className="w-full px-5 py-3 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none font-medium text-dark shadow-sm"
+                                    value={formData.image || ''}
+                                    onChange={e => { markDirty(); setFormData({ ...formData, image: e.target.value }); }}
+                                />
+                                {formData.image && (
+                                    <div className="relative group w-32 h-32 rounded-2xl bg-gray-50 border overflow-hidden shadow-sm">
+                                        <img src={formData.image} alt="Preview" className="w-full h-full object-cover" />
+                                        <button 
+                                            type="button" 
+                                            onClick={handleRemoveImage}
+                                            className="absolute inset-0 bg-red-500/80 text-white opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center font-bold text-xs"
+                                        >
+                                            KALDIR
+                                        </button>
+                                    </div>
                                 )}
                             </div>
                         </div>
@@ -289,7 +272,9 @@ export default function AdminProducts() {
                                 </td>
                                 <td className="px-8 py-4">
                                     <span className="bg-white border text-primary border-primary/20 text-xs font-bold px-4 py-2 rounded-full shadow-sm tracking-wide uppercase">
-                                        {product.category}
+                                        {dynamicCategories.find(c => c.id === product.category)?.name?.[activeLang] || 
+                                         dynamicCategories.find(c => c.id === product.category)?.name?.tr || 
+                                         product.category}
                                     </span>
                                 </td>
                                 <td className="px-8 py-4 text-right">

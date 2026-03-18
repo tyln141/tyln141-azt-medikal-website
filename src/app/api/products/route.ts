@@ -1,12 +1,15 @@
 import { NextResponse } from 'next/server';
-import { readCollection, writeCollection } from '@/lib/firestoreStore';
+import { readCollection, writeCollection, DEFAULT_PRODUCTS } from "@/lib/firestoreStore";
 
 export async function GET() {
     try {
-        const data = await readCollection('products');
-        return NextResponse.json(data);
+        const data = await readCollection("products");
+        if (!data || data.length === 0) {
+            return Response.json(DEFAULT_PRODUCTS);
+        }
+        return Response.json(data);
     } catch (error) {
-        return NextResponse.json([], { status: 500 });
+        return Response.json(DEFAULT_PRODUCTS);
     }
 }
 

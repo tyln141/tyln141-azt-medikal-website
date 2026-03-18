@@ -121,18 +121,21 @@ export default function SiteContentAdmin() {
 
     const addStat = () => {
         if (!formData) return;
+        markDirty();
         const newStats = [...formData.about.stats, { value: '', label: emptyMultilingual() }];
         setFormData({ ...formData, about: { ...formData.about, stats: newStats } });
     };
 
     const removeStat = (index: number) => {
         if (!formData) return;
+        markDirty();
         const newStats = formData.about.stats.filter((_, i) => i !== index);
         setFormData({ ...formData, about: { ...formData.about, stats: newStats } });
     };
 
     const updateStat = (index: number, field: 'value' | 'label', value: string | any, lang?: LangCode) => {
         if (!formData) return;
+        markDirty();
         const newStats = [...formData.about.stats];
         if (field === 'value') {
             newStats[index].value = value;
@@ -145,6 +148,7 @@ export default function SiteContentAdmin() {
     // WhyUs Helpers
     const updateWhyUsTitle = (lang: LangCode, value: string) => {
         if (!formData) return;
+        markDirty();
         setFormData({
             ...formData,
             whyUs: {
@@ -156,13 +160,9 @@ export default function SiteContentAdmin() {
 
     const addWhyUsItem = () => {
         if (!formData) return;
+        markDirty();
         const newItems = [...formData.whyUs.items, { icon: '⭐', title: emptyMultilingual(), description: emptyMultilingual() }];
         setFormData({ ...formData, whyUs: { ...formData.whyUs, items: newItems } });
-    };
-
-    const handleImageUpload = async (file: File, callback: (url: string) => void) => {
-        alert('Yerel dosya yükleme devre dışı bırakıldı. Lütfen Firestore veya harici bir URL kullanın.');
-        console.warn('Local uploads are disabled as per new requirements.');
     };
 
     const updateAboutImage = (url: string) => {
@@ -183,21 +183,6 @@ export default function SiteContentAdmin() {
         setFormData({ ...formData, about: { ...formData.about, [field]: value as any } });
     };
 
-    const updateWhyUsIcon = (index: number, url: string) => {
-        if (!formData) return;
-        markDirty();
-        const newItems = [...formData.whyUs.items];
-        newItems[index].icon = url;
-        setFormData({ ...formData, whyUs: { ...formData.whyUs, items: newItems } });
-    };
-
-    const removeWhyUsItem = (index: number) => {
-        if (!formData) return;
-        markDirty();
-        const newItems = formData.whyUs.items.filter((_, i) => i !== index);
-        setFormData({ ...formData, whyUs: { ...formData.whyUs, items: newItems } });
-    };
-
     const updateWhyUsItem = (index: number, field: keyof WhyUsItem, value: string, lang?: LangCode) => {
         if (!formData) return;
         markDirty();
@@ -207,6 +192,13 @@ export default function SiteContentAdmin() {
         } else if (lang) {
             (newItems[index][field] as MultilingualText)[lang] = value;
         }
+        setFormData({ ...formData, whyUs: { ...formData.whyUs, items: newItems } });
+    };
+
+    const removeWhyUsItem = (index: number) => {
+        if (!formData) return;
+        markDirty();
+        const newItems = formData.whyUs.items.filter((_, i) => i !== index);
         setFormData({ ...formData, whyUs: { ...formData.whyUs, items: newItems } });
     };
 
@@ -277,127 +269,50 @@ export default function SiteContentAdmin() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-3">Bölüm Görseli</label>
-                                <div 
-                                    onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add('border-primary'); }}
-                                    onDragLeave={(e) => { e.preventDefault(); e.currentTarget.classList.remove('border-primary'); }}
-                                    onDrop={(e) => {
-                                        e.preventDefault();
-                                        e.currentTarget.classList.remove('border-primary');
-                                        const file = e.dataTransfer.files[0];
-                                        if (file) handleImageUpload(file, updateAboutImage);
-                                    }}
-                                    className="p-8 bg-gray-50 border-2 border-dashed border-gray-200 rounded-[2rem] flex flex-col items-center justify-center gap-6 group hover:border-primary/30 transition-all cursor-pointer relative"
-                                >
-                                    {formData.about.image ? (
-                                        <div className="space-y-4 w-full">
-                                            <div 
-                                                className="relative border-4 border-white shadow-2xl rounded-3xl overflow-hidden bg-gray-100 mx-auto transition-all duration-300"
-                                                style={{ 
-                                                    width: formData.about.imageWidth ? (formData.about.imageWidth.includes('%') || formData.about.imageWidth.includes('px') ? formData.about.imageWidth : `${formData.about.imageWidth}px`) : '100%',
-                                                    height: formData.about.imageHeight ? (formData.about.imageHeight.includes('%') || formData.about.imageHeight.includes('px') ? formData.about.imageHeight : `${formData.about.imageHeight}px`) : '400px',
-                                                    maxWidth: '100%'
-                                                }}
-                                            >
-                                                <img 
-                                                    src={formData.about.image} 
-                                                    alt="About preview" 
-                                                    className="w-full h-full transition-all duration-300" 
-                                                    style={{
-                                                        objectFit: formData.about.imageFit || 'cover',
-                                                        objectPosition: formData.about.imagePosition || 'center'
-                                                    }}
-                                                />
-                                                <button 
-                                                    onClick={(e) => { e.stopPropagation(); markDirty(); setFormData({ ...formData, about: { ...formData.about, image: '' } }); }}
-                                                    className="absolute top-4 right-4 bg-red-500/80 backdrop-blur-md text-white p-2.5 rounded-xl shadow-xl hover:bg-red-600 transition-all"
-                                                >
-                                                    🗑️
-                                                </button>
-                                            </div>
-
-                                            <div className="grid grid-cols-2 gap-4">
-                                                <div>
-                                                    <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Genişlik (px)</label>
-                                                    <input 
-                                                        type="text" 
-                                                        placeholder="Örn: 500 veya %100"
-                                                        className="w-full px-4 py-3 bg-white border border-gray-100 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none text-sm font-medium"
-                                                        value={formData.about.imageWidth || ''}
-                                                        onChange={(e) => updateAboutDimension('imageWidth', e.target.value)}
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Yükseklik (px)</label>
-                                                    <input 
-                                                        type="text" 
-                                                        placeholder="Örn: 400"
-                                                        className="w-full px-4 py-3 bg-white border border-gray-100 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none text-sm font-medium"
-                                                        value={formData.about.imageHeight || ''}
-                                                        onChange={(e) => updateAboutDimension('imageHeight', e.target.value)}
-                                                    />
-                                                </div>
-                                            </div>
-
-                                            <div className="grid grid-cols-2 gap-6 pt-4 border-t border-gray-100/50">
-                                                <div className="space-y-3">
-                                                    <label className="block text-[11px] font-black text-gray-400 uppercase tracking-tighter">Yerleşim (Fit)</label>
-                                                    <div className="flex bg-white p-1 rounded-xl border border-gray-100 shadow-sm gap-1">
-                                                        {[
-                                                            { id: 'cover', label: 'Kırp (Doldur)' },
-                                                            { id: 'contain', label: 'Sığdır (Tam)' }
-                                                        ].map(fit => (
-                                                            <button 
-                                                                key={fit.id}
-                                                                onClick={(e) => { e.preventDefault(); updateAboutStyle('imageFit', fit.id); }}
-                                                                className={`flex-1 py-2 px-3 rounded-lg text-[10px] font-bold transition-all ${formData.about.imageFit === fit.id || (!formData.about.imageFit && fit.id === 'cover') ? 'bg-primary text-white shadow-md shadow-primary/20' : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50'}`}
-                                                            >
-                                                                {fit.label}
-                                                            </button>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                                <div className="space-y-3">
-                                                    <label className="block text-[11px] font-black text-gray-400 uppercase tracking-tighter">Odak Noktası (Crop)</label>
-                                                    <div className="flex bg-white p-1 rounded-xl border border-gray-100 shadow-sm gap-1">
-                                                        {[
-                                                            { id: 'top', label: 'Üst' },
-                                                            { id: 'center', label: 'Orta' },
-                                                            { id: 'bottom', label: 'Alt' }
-                                                        ].map(pos => (
-                                                            <button 
-                                                                key={pos.id}
-                                                                onClick={(e) => { e.preventDefault(); updateAboutStyle('imagePosition', pos.id); }}
-                                                                className={`flex-1 py-2 px-3 rounded-lg text-[10px] font-bold transition-all ${formData.about.imagePosition === pos.id || (!formData.about.imagePosition && pos.id === 'center') ? 'bg-accent text-white shadow-md shadow-accent/20' : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50'}`}
-                                                            >
-                                                                {pos.label}
-                                                            </button>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <p className="text-[10px] text-gray-400 text-center italic mt-2">İpucu: Genişliği boş bırakırsanız otomatik yayılır. Genişlik/Yükseklik için "px" veya "%" kullanabilirsiniz.</p>
-                                        </div>
-                                    ) : (
-                                        <div className="text-center py-6">
-                                            <div className="w-20 h-20 bg-primary/10 rounded-3xl flex items-center justify-center text-4xl mb-4 mx-auto group-hover:scale-110 transition-transform">🖼️</div>
-                                            <p className="text-gray-400 font-bold uppercase tracking-widest text-[10px] mb-2">Görseli Buraya Sürükleyin</p>
-                                            <p className="text-gray-300 text-[9px] mb-4">veya seçmek için tıklayın</p>
-                                            <input 
-                                                type="file" 
-                                                accept="image/*"
-                                                className="absolute inset-0 opacity-0 cursor-pointer"
-                                                onChange={(e) => {
-                                                    const file = e.target.files?.[0];
-                                                    if (file) handleImageUpload(file, updateAboutImage);
+                                <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-3">Görsel URL (Harici)</label>
+                                <div className="space-y-4">
+                                    <input
+                                        type="text"
+                                        value={formData.about.image || ''}
+                                        onChange={(e) => updateAboutImage(e.target.value)}
+                                        className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all font-semibold"
+                                        placeholder="https://... (Örn: Unsplash veya Firebase)"
+                                    />
+                                    {formData.about.image && (
+                                        <div className="relative border-4 border-white shadow-xl rounded-2xl overflow-hidden bg-gray-100 mx-auto"
+                                             style={{ 
+                                                 width: formData.about.imageWidth || '100%', 
+                                                 height: formData.about.imageHeight || '300px',
+                                                 maxWidth: '100%'
+                                             }}>
+                                            <img 
+                                                src={formData.about.image || "/placeholder.png"} 
+                                                alt="Preview" 
+                                                className="w-full h-full"
+                                                style={{
+                                                    objectFit: formData.about.imageFit || 'cover',
+                                                    objectPosition: formData.about.imagePosition || 'center'
                                                 }}
                                             />
-                                            <button className="bg-primary text-white px-8 py-3 rounded-2xl font-bold shadow-lg shadow-primary/20 pointer-events-none">
-                                                Görsel Seç
+                                            <button 
+                                                onClick={() => updateAboutImage('')}
+                                                className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-lg text-xs font-bold"
+                                            >
+                                                KALDIR
                                             </button>
                                         </div>
                                     )}
+                                    
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Genişlik</label>
+                                            <input type="text" value={formData.about.imageWidth} onChange={e => updateAboutDimension('imageWidth', e.target.value)} className="w-full px-4 py-2 border rounded-xl" placeholder="100% veya 500px" />
+                                        </div>
+                                        <div>
+                                            <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Yükseklik</label>
+                                            <input type="text" value={formData.about.imageHeight} onChange={e => updateAboutDimension('imageHeight', e.target.value)} className="w-full px-4 py-2 border rounded-xl" placeholder="300px" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -405,49 +320,18 @@ export default function SiteContentAdmin() {
                         <div className="space-y-8">
                             <div className="flex justify-between items-center mb-2">
                                 <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest">İstatistikler</label>
-                                <button
-                                    onClick={addStat}
-                                    className="text-xs font-bold text-primary bg-primary/10 px-4 py-2 rounded-xl hover:bg-primary/20 transition-all font-black uppercase tracking-tighter"
-                                >
-                                    + İstatistik Ekle
-                                </button>
+                                <button onClick={addStat} className="text-xs font-bold text-primary bg-primary/10 px-4 py-2 rounded-xl hover:bg-primary/20 transition-all font-black uppercase">+ Ekle</button>
                             </div>
                             <div className="space-y-4">
                                 {formData.about.stats.map((stat, idx) => (
                                     <div key={idx} className="p-6 bg-gray-50 rounded-[2rem] border border-gray-100 flex flex-col gap-4 relative group">
-                                        <button
-                                            onClick={() => removeStat(idx)}
-                                            className="absolute -top-3 -right-3 w-8 h-8 bg-white text-red-500 rounded-full flex items-center justify-center shadow-md border border-gray-100 opacity-0 group-hover:opacity-100 transition-opacity"
-                                        >
-                                            ✕
-                                        </button>
+                                        <button onClick={() => removeStat(idx)} className="absolute -top-3 -right-3 w-8 h-8 bg-white text-red-500 rounded-full flex items-center justify-center shadow-md border border-gray-100 opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
                                         <div className="grid grid-cols-3 gap-4">
-                                            <div className="col-span-1">
-                                                <input
-                                                    type="text"
-                                                    value={stat.value}
-                                                    onChange={(e) => updateStat(idx, 'value', e.target.value)}
-                                                    className="w-full px-4 py-3 bg-white border border-gray-100 rounded-xl focus:border-primary outline-none font-bold"
-                                                    placeholder="Değer (ör: 15+)"
-                                                />
-                                            </div>
-                                            <div className="col-span-2">
-                                                <input
-                                                    type="text"
-                                                    value={stat.label[activeLang] || ''}
-                                                    onChange={(e) => updateStat(idx, 'label', e.target.value, activeLang)}
-                                                    className="w-full px-4 py-3 bg-white border border-gray-100 rounded-xl focus:border-primary outline-none font-medium"
-                                                    placeholder={`Etiket (${activeLang})`}
-                                                />
-                                            </div>
+                                            <input type="text" value={stat.value} onChange={e => updateStat(idx, 'value', e.target.value)} className="col-span-1 px-4 py-3 bg-white border border-gray-100 rounded-xl outline-none font-bold" placeholder="Değer" />
+                                            <input type="text" value={stat.label[activeLang]} onChange={e => updateStat(idx, 'label', e.target.value, activeLang)} className="col-span-2 px-4 py-3 bg-white border border-gray-100 rounded-xl outline-none font-medium" placeholder={`Etiket (${activeLang})`} />
                                         </div>
                                     </div>
                                 ))}
-                                {formData.about.stats.length === 0 && (
-                                    <div className="text-center py-10 bg-gray-50 rounded-[2rem] border border-dashed border-gray-200 text-gray-400 font-medium font-bold uppercase text-[10px] tracking-widest">
-                                        Henüz istatistik eklenmemiş.
-                                    </div>
-                                )}
                             </div>
                         </div>
                     </div>
@@ -455,120 +339,45 @@ export default function SiteContentAdmin() {
 
                 {/* WHY US SECTION */}
                 <section className="bg-white rounded-[3rem] p-12 border border-gray-100 shadow-xl relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-[60px] translate-x-1/2 -translate-y-1/2" />
-
-                    <div className="flex items-center justify-between mb-10 relative z-10">
+                    <div className="flex items-center justify-between mb-10">
                         <div className="flex items-center gap-4">
                             <div className="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-2xl text-accent">❓</div>
                             <h2 className="text-3xl font-extrabold text-dark tracking-tight">Neden Biz Bölümü</h2>
                         </div>
                     </div>
 
-                    <div className="mb-12 relative z-10 w-full max-w-2xl">
-                        <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-3">Merkezi Başlık ({activeLang})</label>
-                        <input
-                            type="text"
-                            value={formData.whyUs.title[activeLang] || ''}
-                            onChange={(e) => updateWhyUsTitle(activeLang, e.target.value)}
-                            className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-accent/10 focus:border-accent outline-none transition-all font-semibold"
-                            placeholder="Bölüm başlığı..."
-                        />
+                    <div className="mb-12 w-full max-w-2xl">
+                        <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-3">Bölüm Başlığı ({activeLang})</label>
+                        <input type="text" value={formData.whyUs.title[activeLang]} onChange={e => updateWhyUsTitle(activeLang, e.target.value)} className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-accent/10 focus:border-accent outline-none font-semibold" />
                     </div>
 
-                    <div className="flex justify-between items-center mb-6 relative z-10">
+                    <div className="flex justify-between items-center mb-6">
                         <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest">Özellik Kartları</label>
-                        <button
-                            onClick={addWhyUsItem}
-                            className="text-xs font-bold text-accent bg-accent/10 px-4 py-2 rounded-xl hover:bg-accent/20 transition-all font-black uppercase tracking-tighter"
-                        >
-                            + Kart Ekle
-                        </button>
+                        <button onClick={addWhyUsItem} className="text-xs font-bold text-accent bg-accent/10 px-4 py-2 rounded-xl hover:bg-accent/20 transition-all font-black uppercase">+ Kart Ekle</button>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {formData.whyUs.items.map((item, idx) => (
                             <div key={idx} className="p-8 bg-gray-50 rounded-[2.5rem] border border-gray-100 relative group flex flex-col gap-6">
-                                <button
-                                    onClick={() => removeWhyUsItem(idx)}
-                                    className="absolute -top-3 -right-3 w-8 h-8 bg-white text-red-500 rounded-full flex items-center justify-center shadow-md border border-gray-100 opacity-0 group-hover:opacity-100 transition-opacity z-20"
-                                >
-                                    ✕
-                                </button>
-
+                                <button onClick={() => removeWhyUsItem(idx)} className="absolute -top-3 -right-3 w-8 h-8 bg-white text-red-500 rounded-full flex items-center justify-center shadow-md border border-gray-100 opacity-0 group-hover:opacity-100 transition-opacity z-20">✕</button>
+                                
                                 <div className="flex flex-col gap-4">
-                                    <div 
-                                        onClick={() => document.getElementById(`icon-upload-${idx}`)?.click()}
-                                        onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add('border-accent'); }}
-                                        onDragLeave={(e) => { e.preventDefault(); e.currentTarget.classList.remove('border-accent'); }}
-                                        onDrop={(e) => {
-                                            e.preventDefault();
-                                            e.currentTarget.classList.remove('border-accent');
-                                            const file = e.dataTransfer.files[0];
-                                            if (file) handleImageUpload(file, (url) => updateWhyUsIcon(idx, url));
-                                        }}
-                                        className="w-full aspect-square bg-white border border-gray-100 rounded-[2rem] flex flex-col items-center justify-center text-2xl shadow-sm outline-none cursor-pointer relative group/icon overflow-hidden border-2 border-dashed border-gray-200 hover:border-accent/30 transition-all font-bold"
-                                    >
+                                    <div className="w-full aspect-square bg-white border border-gray-100 rounded-[2rem] flex items-center justify-center text-4xl shadow-sm overflow-hidden p-4">
                                         {item.icon && (item.icon.startsWith('/') || item.icon.startsWith('http')) ? (
-                                            <img src={item.icon} alt="icon" className="w-full h-full object-contain p-4" />
+                                            <img src={item.icon || "/placeholder.png"} alt="icon" className="w-full h-full object-contain" />
                                         ) : (
-                                            <span className="text-4xl">{item.icon || '⭐'}</span>
+                                            <span>{item.icon || '⭐'}</span>
                                         )}
-                                        <div className="absolute inset-0 bg-accent/80 opacity-0 group-hover/icon:opacity-100 transition-opacity flex flex-col items-center justify-center text-[10px] text-white font-black uppercase tracking-widest text-center px-2">
-                                            <span>Değiştir</span>
-                                            <span className="text-[8px] opacity-60 mt-1">Sürükle veya Tıkla</span>
-                                        </div>
-                                        <input 
-                                            id={`icon-upload-${idx}`}
-                                            type="file" 
-                                            accept="image/*"
-                                            className="hidden"
-                                            onChange={(e) => {
-                                                const file = e.target.files?.[0];
-                                                if (file) handleImageUpload(file, (url) => updateWhyUsIcon(idx, url));
-                                            }}
-                                        />
                                     </div>
-                                    <div className="flex-1 text-center">
-                                        <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">İkon/Emoji</label>
-                                        <input 
-                                            type="text" 
-                                            value={item.icon} 
-                                            onChange={(e) => updateWhyUsItem(idx, 'icon', e.target.value)}
-                                            className="w-full bg-white border border-gray-100 rounded-lg py-1 px-2 text-center text-xs font-bold outline-none focus:border-accent"
-                                            placeholder="Emoji girin..."
-                                        />
-                                    </div>
+                                    <input type="text" value={item.icon} onChange={e => updateWhyUsItem(idx, 'icon', e.target.value)} className="w-full bg-white border border-gray-100 rounded-lg py-2 px-3 text-center text-xs font-bold outline-none" placeholder="Emoji veya URL" />
                                 </div>
 
                                 <div className="space-y-4">
-                                    <input
-                                        type="text"
-                                        value={item.title[activeLang] || ''}
-                                        onChange={(e) => updateWhyUsItem(idx, 'title', e.target.value, activeLang)}
-                                        className="w-full px-4 py-3 bg-white border border-gray-100 rounded-xl focus:border-accent outline-none font-bold placeholder:text-gray-200"
-                                        placeholder={`Başlık (${activeLang})`}
-                                    />
-                                    <textarea
-                                        rows={4}
-                                        value={item.description[activeLang] || ''}
-                                        onChange={(e) => updateWhyUsItem(idx, 'description', e.target.value, activeLang)}
-                                        className="w-full px-4 py-3 bg-white border border-gray-100 rounded-xl focus:border-accent outline-none font-medium text-sm leading-relaxed placeholder:text-gray-200"
-                                        placeholder={`Açıklama (${activeLang})`}
-                                    />
-                                    <button 
-                                        onClick={() => removeWhyUsItem(idx)}
-                                        className="w-full py-4 bg-red-50 text-red-500 text-[10px] font-black uppercase tracking-widest rounded-2xl hover:bg-red-500 hover:text-white transition-all border border-red-100"
-                                    >
-                                        🗑️ Kartı Kaldır
-                                    </button>
+                                    <input type="text" value={item.title[activeLang]} onChange={e => updateWhyUsItem(idx, 'title', e.target.value, activeLang)} className="w-full px-4 py-3 bg-white border border-gray-100 rounded-xl font-bold" placeholder={`Başlık (${activeLang})`} />
+                                    <textarea rows={3} value={item.description[activeLang]} onChange={e => updateWhyUsItem(idx, 'description', e.target.value, activeLang)} className="w-full px-4 py-3 bg-white border border-gray-100 rounded-xl font-medium text-sm" placeholder={`Açıklama (${activeLang})`} />
                                 </div>
                             </div>
                         ))}
-                        {formData.whyUs.items.length === 0 && (
-                            <div className="col-span-full py-20 text-center bg-gray-50 rounded-[3rem] border border-dashed border-gray-200 text-gray-300 font-bold uppercase tracking-widest text-xs">
-                                Neden Biz kartı bulunamadı.
-                            </div>
-                        )}
                     </div>
                 </section>
             </div>

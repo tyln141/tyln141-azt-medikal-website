@@ -1,25 +1,18 @@
 import { NextResponse } from 'next/server';
-import { readDoc, writeDoc } from '@/lib/firestoreStore';
+import { readDoc, writeDoc, DEFAULT_SITE_CONTENT } from '@/lib/firestoreStore';
 
-const DEFAULT_CONTENT = {
-    about: { 
-        title: { tr: "Hakkımızda", en: "About Us" }, 
-        description: { tr: "", en: "" }, 
-        stats: [], 
-        image: "" 
-    },
-    whyUs: { 
-        title: { tr: "Neden Biz?", en: "Why Choose Us?" }, 
-        items: [] 
-    }
-};
+export const dynamic = 'force-dynamic';
 
 export async function GET() {
     try {
-        const data = await readDoc('siteContent', 'main', DEFAULT_CONTENT);
+        const data = await readDoc("siteContent", "main");
+        if (!data || Object.keys(data).length === 0) {
+            console.log("Using default site content");
+            return NextResponse.json(DEFAULT_SITE_CONTENT);
+        }
         return NextResponse.json(data);
     } catch (error) {
-        return NextResponse.json(DEFAULT_CONTENT);
+        return NextResponse.json(DEFAULT_SITE_CONTENT);
     }
 }
 

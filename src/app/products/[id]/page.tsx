@@ -98,7 +98,7 @@ export default function ProductDetail() {
                   </p>
                 </div>
 
-                {product.features && (product.features as any)[language] && (product.features as any)[language].length > 0 && (
+                {(product.features as any)?.[language] && Array.isArray((product.features as any)[language]) && (product.features as any)[language].length > 0 && (
                   <div className="pt-6">
                     <h3 className="text-xl font-bold text-dark mb-4">{t("product.specifications")}</h3>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
